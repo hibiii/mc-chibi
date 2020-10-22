@@ -1,9 +1,11 @@
-# Fabric Example Mod
+# Hibex Mod
+## Hibi's Experiments Mod
 
-## Setup
+This mod won't be published, and isn't suggested for use in production.
 
-For setup instructions please see the [fabric wiki page](https://fabricmc.net/wiki/tutorial:setup) that relates to the IDE that you are using.
+*Reality can be whatever I want.*\
+-funny purple man
 
 ## License
 
-This template is available under the CC0 license. Feel free to learn from it and incorporate it in your own projects.
+This mod wouldn't have a license if not having a license wasn't a bad thing, so it's licensed under Unlicense.
