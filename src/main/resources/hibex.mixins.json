@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "hibiii.hibex.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+  ],
+  "client": [
+    "Sensible19"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
