@@ -6,7 +6,7 @@
   "mixins": [
   ],
   "client": [
-    "Sensible19"
+    "PreventWeaponSwing"
   ],
   "injectors": {
     "defaultRequire": 1

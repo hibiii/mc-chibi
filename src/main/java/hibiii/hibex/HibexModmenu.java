@@ -8,40 +8,49 @@ import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 
 public class HibexModmenu implements ModMenuApi {
-	// Sensible19
-	public enum WeaponSwingControl {
+	// PreventWeaponSwing, or Sensible19
+	public enum OptionPreventWeaponSwing {
 		NONE,
 		LENIENT,
 		STRICT
 	}
-	public static WeaponSwingControl weaponSwingThreshold;
+	public static OptionPreventWeaponSwing weaponSwingThreshold;
+	
 	
 	public HibexModmenu() {
-		weaponSwingThreshold = WeaponSwingControl.NONE;
+		weaponSwingThreshold = OptionPreventWeaponSwing.NONE;
 	}
 	
+	
+	// Cloth Config is holding my hand through this, thx :)
 	@Override
 	public ConfigScreenFactory<?> getModConfigScreenFactory() {
 		return parent -> {
-			
 			ConfigBuilder builder = ConfigBuilder.create();
 			ConfigEntryBuilder entryBuilder = builder.entryBuilder();
 			builder.setParentScreen(parent).setTitle(new TranslatableText("hibex.menu.title"));
+			
+			// This is dumb (chaining methods), but it's also really cool.
 			builder.getOrCreateCategory(new TranslatableText("hibex.menu.general"))
+			
+			// Prevent Weapon Swing
 			.addEntry(entryBuilder
-					.startEnumSelector(new TranslatableText("hibex.option.weapon_swing_threshold"),WeaponSwingControl.class,weaponSwingThreshold)
-					.setDefaultValue(WeaponSwingControl.NONE)
+					.startEnumSelector(new TranslatableText("hibex.option.weapon_swing_threshold"),OptionPreventWeaponSwing.class,weaponSwingThreshold)
+					.setDefaultValue(OptionPreventWeaponSwing.NONE)
 					.setSaveConsumer(newValue -> weaponSwingThreshold = newValue)
 					.setEnumNameProvider(enumKey -> {
-						switch ((WeaponSwingControl)enumKey) {
+						switch ((OptionPreventWeaponSwing)enumKey) {
 							case NONE: return new TranslatableText("hibex.option.weapon_swing_threshold.none");
 							case LENIENT: return new TranslatableText("hibex.option.weapon_swing_threshold.lenient");
 							case STRICT: return new TranslatableText("hibex.option.weapon_swing_threshold.strict");
 						}
-						return Text.of("SwitchError");})
+						return Text.of("InvalidEnumVal");})
 					.build())
+			
+			// PWS Warning
 			.addEntry(entryBuilder.startTextDescription(new TranslatableText("hibex.option.weapon_swing_threshold.warning"))
 					.build());
+			
 			return builder.build();
 		};
 	}

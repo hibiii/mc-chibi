@@ -11,10 +11,10 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-// Sensible19 prevents the player from swinging weapon during attack cooldown.
+// Previously known as Sensible19, prevents the player from swinging weapon during attack cooldown.
 // This mod can be seen as kinda cheaty, but I'm implementing it because it's a feature in combat-test.
 @Mixin(MinecraftClient.class)
-public class Sensible19 {
+public class PreventWeaponSwing {
 	
 	@Shadow
 	public ClientPlayerEntity player;
@@ -25,7 +25,9 @@ public class Sensible19 {
 	
 	@Inject(at = @At("HEAD"), method = "doAttack()V", cancellable = true)
 	private void attackOnCooldownOverride(CallbackInfo info) {
+		
 		switch (HibexModmenu.weaponSwingThreshold) {
+		// Disables this feature entirely.
 		case NONE:
 			return;
 		case LENIENT:
@@ -34,10 +36,11 @@ public class Sensible19 {
 		case STRICT:
 			threshold = 0.8f;
 			break;
-		default:
-			break;
+		// On default, use the last known value.
 		};
+		
 		// If I'm spam clicking, trying to hunt a mob or player, I am looking at an entity or at nothing.
+		// Or rather, I don't want to mine slowly, so I won't prevent myself from breaking blocks.
 		// !!! I'm comparing against blocks because it's faster as it's the only option left.
 		if (this.player.getAttackCooldownProgress(1.0f) < threshold && this.crosshairTarget.getType() != HitResult.Type.BLOCK) {
 				info.cancel();
