@@ -1,10 +1,17 @@
 # Hibex Mod
 ## Hibi's Experiments Mod
 
-This mod won't be published, and isn't suggested for use in production.
+This mod won't be published in the near future, and isn't suggested for use in production.
+Feel free to mess around with it though.
 
 *Reality can be whatever I want.*\
 -funny purple man
+
+## Turbo Thanks
+
+"Thanks" can't simply describe my grattitude for these people, so a turbo thanks it is:
+
+- supersaiyansubtlety and Reece for helping me fix missing references early on
 
 ## License
 
