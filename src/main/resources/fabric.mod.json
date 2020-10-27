@@ -18,9 +18,8 @@
 
   "environment": "*",
   "entrypoints": {
-    "main": [
-      "hibiii.hibex.ExampleMod"
-    ]
+    "client": [ "hibiii.hibex.HibexMod" ],
+    "modmenu": [ "hibiii.hibex.HibexModmenu" ]
   },
   "mixins": [
     "hibex.mixins.json"
