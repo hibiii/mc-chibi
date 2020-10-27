@@ -1,0 +1,9 @@
+{
+	"hibex.menu.title": "Hibex Settings",
+	"hibex.menu.general": "General",
+	"hibex.option.weapon_swing_threshold": "Prevent Weapon Swing",
+	"hibex.option.weapon_swing_threshold.none": "OFF",
+	"hibex.option.weapon_swing_threshold.lenient": "Lenient",
+	"hibex.option.weapon_swing_threshold.strict": "Strictly",
+	"hibex.option.weapon_swing_threshold.warning": "Some multiplayer servers may consider 'Prevent Weapon Swing' as an unfair advantage. Use at your own risk."
+}
