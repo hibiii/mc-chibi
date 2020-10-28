@@ -1,5 +1,5 @@
-# Hibex Mod
-## Hibi's Experiments Mod
+# Chibi Mod
+## Hibi's Custom Mod
 
 This mod won't be published in the near future, and isn't suggested for use in production.
 Feel free to mess around with it though.

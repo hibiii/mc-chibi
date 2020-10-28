@@ -1,6 +1,4 @@
-package hibiii.hibex.mixin;
-
-import hibiii.hibex.Hibix;
+package hibiii.chibi.mixin;
 
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
@@ -11,6 +9,8 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+import hibiii.chibi.Chibi;
 
 // Previously known as Sensible19, prevents the player from swinging weapon during attack cooldown.
 // This mod can be seen as kinda cheaty, but I'm implementing it because it's a feature in combat-test.
@@ -27,7 +27,7 @@ public class PreventWeaponSwing {
 	@Inject(at = @At("HEAD"), method = "doAttack()V", cancellable = true)
 	private void attackOnCooldownOverride(CallbackInfo info) {
 		
-		switch (Hibix.optionPreventSwing) {
+		switch (Chibi.optionPreventSwing) {
 		// Disables this feature entirely.
 		case OFF:
 			return;

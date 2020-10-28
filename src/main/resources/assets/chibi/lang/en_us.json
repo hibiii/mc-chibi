@@ -1,0 +1,9 @@
+{
+	"chibi.menu.title": "Chibi Settings",
+	"chibi.menu.general": "General",
+	"chibi.option.weapon_swing_threshold": "Prevent Weapon Swing",
+	"chibi.option.weapon_swing_threshold.none": "OFF",
+	"chibi.option.weapon_swing_threshold.lenient": "Lenient",
+	"chibi.option.weapon_swing_threshold.strict": "Strictly",
+	"chibi.option.weapon_swing_threshold.warning": "Some multiplayer servers may consider 'Prevent Weapon Swing' as an unfair advantage. Use at your own risk."
+}

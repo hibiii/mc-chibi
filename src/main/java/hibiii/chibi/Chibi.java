@@ -1,7 +1,7 @@
-package hibiii.hibex;
+package hibiii.chibi;
 import net.fabricmc.api.ClientModInitializer;
 
-public class Hibix implements ClientModInitializer {
+public class Chibi implements ClientModInitializer {
 
 	// PreventWeaponSwing
 	public enum OptionPreventSwing {

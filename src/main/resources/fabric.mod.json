@@ -1,28 +1,28 @@
 {
   "schemaVersion": 1,
-  "id": "hibex",
+  "id": "chibi",
   "version": "${version}",
 
-  "name": "Hibex Mod",
+  "name": "Chibi Mod",
   "description": "Hibi's Experiments Mod",
   "authors": [
     "Hibiii"
   ],
   "contact": {
-    "sources": "https://github.com/Hibiii/mc-hibex",
-    "issues": "https://github.com/Hibiii/mc-hibex/issues"
+    "sources": "https://github.com/Hibiii/mc-chibi",
+    "issues": "https://github.com/Hibiii/mc-chibi/issues"
   },
 
   "license": "Unlicense",
-  "icon": "assets/hibex/icon.png",
+  "icon": "assets/chibi/icon.png",
 
   "environment": "*",
   "entrypoints": {
-    "client": [ "hibiii.hibex.Hibix" ],
-    "modmenu": [ "hibiii.hibex.HibexModmenu" ]
+    "client": [ "hibiii.chibi.Chibi" ],
+    "modmenu": [ "hibiii.chibi.ChibiModmenu" ]
   },
   "mixins": [
-    "hibex.mixins.json"
+    "chibi.mixins.json"
   ],
 
   "depends": {
@@ -35,7 +35,7 @@
     "modupdater": {
       "strategy": "github",
       "owner":"Hibiii",
-      "repository":"mc-hibex"
+      "repository":"mc-chibi"
     }
   }
 }
