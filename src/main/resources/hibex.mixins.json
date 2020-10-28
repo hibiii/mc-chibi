@@ -6,7 +6,9 @@
   "mixins": [
   ],
   "client": [
-    "PreventWeaponSwing"
+    "PreventWeaponSwing",
+    "SyncAttack",
+    "TpsReader"
   ],
   "injectors": {
     "defaultRequire": 1
