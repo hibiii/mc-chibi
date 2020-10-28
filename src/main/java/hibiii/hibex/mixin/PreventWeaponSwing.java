@@ -1,5 +1,6 @@
 package hibiii.hibex.mixin;
-import hibiii.hibex.HibexModmenu;
+
+import hibiii.hibex.Hibix;
 
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
@@ -26,15 +27,15 @@ public class PreventWeaponSwing {
 	@Inject(at = @At("HEAD"), method = "doAttack()V", cancellable = true)
 	private void attackOnCooldownOverride(CallbackInfo info) {
 		
-		switch (HibexModmenu.weaponSwingThreshold) {
+		switch (Hibix.optionPreventSwing) {
 		// Disables this feature entirely.
-		case NONE:
+		case OFF:
 			return;
 		case LENIENT:
 			threshold = 0.5f;
 			break;
 		case STRICT:
-			threshold = 0.8f;
+			threshold = 0.9f;
 			break;
 		// On default, use the last known value.
 		};

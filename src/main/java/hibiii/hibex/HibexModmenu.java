@@ -1,5 +1,6 @@
 package hibiii.hibex;
 
+import hibiii.hibex.Hibix.OptionPreventSwing;
 import io.github.prospector.modmenu.api.ConfigScreenFactory;
 import io.github.prospector.modmenu.api.ModMenuApi;
 import me.shedaniel.clothconfig2.api.ConfigBuilder;
@@ -8,19 +9,6 @@ import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 
 public class HibexModmenu implements ModMenuApi {
-	// PreventWeaponSwing, or Sensible19
-	public enum OptionPreventWeaponSwing {
-		NONE,
-		LENIENT,
-		STRICT
-	}
-	public static OptionPreventWeaponSwing weaponSwingThreshold;
-	
-	
-	public HibexModmenu() {
-		weaponSwingThreshold = OptionPreventWeaponSwing.NONE;
-	}
-	
 	
 	// Cloth Config is holding my hand through this, thx :)
 	@Override
@@ -35,12 +23,12 @@ public class HibexModmenu implements ModMenuApi {
 			
 			// Prevent Weapon Swing
 			.addEntry(entryBuilder
-					.startEnumSelector(new TranslatableText("hibex.option.weapon_swing_threshold"),OptionPreventWeaponSwing.class,weaponSwingThreshold)
-					.setDefaultValue(OptionPreventWeaponSwing.NONE)
-					.setSaveConsumer(newValue -> weaponSwingThreshold = newValue)
+					.startEnumSelector(new TranslatableText("hibex.option.weapon_swing_threshold"),OptionPreventSwing.class,Hibix.optionPreventSwing)
+					.setDefaultValue(OptionPreventSwing.OFF)
+					.setSaveConsumer(newValue -> Hibix.optionPreventSwing = newValue)
 					.setEnumNameProvider(enumKey -> {
-						switch ((OptionPreventWeaponSwing)enumKey) {
-							case NONE: return new TranslatableText("hibex.option.weapon_swing_threshold.none");
+						switch ((Hibix.OptionPreventSwing)enumKey) {
+							case OFF: return new TranslatableText("hibex.option.weapon_swing_threshold.none");
 							case LENIENT: return new TranslatableText("hibex.option.weapon_swing_threshold.lenient");
 							case STRICT: return new TranslatableText("hibex.option.weapon_swing_threshold.strict");
 						}

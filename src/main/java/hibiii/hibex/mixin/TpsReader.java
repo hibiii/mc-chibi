@@ -4,7 +4,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import hibiii.hibex.HibexMod;
+import hibiii.hibex.Hibix;
 import net.minecraft.network.packet.s2c.play.WorldTimeUpdateS2CPacket;
 
 
@@ -27,8 +27,8 @@ public class TpsReader {
 			return;
 		}
 
-		HibexMod.tpsMspt = ((realTime - realTimeLast) / deltaTick) / 1000000d;
-		HibexMod.tpsRate = HibexMod.tpsMspt < 50.0d ? 20.0d : (1000d / HibexMod.tpsMspt);
+		Hibix.tpsMspt = ((realTime - realTimeLast) / deltaTick) / 1000000d;
+		Hibix.tpsRate = Hibix.tpsMspt < 50.0d ? 20.0d : (1000d / Hibix.tpsMspt);
 		worldTickLast = worldTick;
 		realTimeLast = realTime;
 	}
