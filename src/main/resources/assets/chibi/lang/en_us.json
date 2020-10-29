@@ -1,9 +1,18 @@
 {
 	"chibi.menu.title": "Chibi Settings",
-	"chibi.menu.general": "General",
-	"chibi.option.weapon_swing_threshold": "Prevent Weapon Swing",
-	"chibi.option.weapon_swing_threshold.none": "OFF",
-	"chibi.option.weapon_swing_threshold.lenient": "Lenient",
-	"chibi.option.weapon_swing_threshold.strict": "Strictly",
-	"chibi.option.weapon_swing_threshold.warning": "Some multiplayer servers may consider 'Prevent Weapon Swing' as an unfair advantage. Use at your own risk."
+	"chibi.menu.category.combat": "Combat",
+	"chibi.option.prevent_swing": "Prevent Weapon Swing",
+	"chibi.option.prevent_swing.OFF": "OFF",
+	"chibi.option.prevent_swing.LENIENT": "Lenient",
+	"chibi.option.prevent_swing.STRICT": "Strictly",
+	"chibi.option.prevent_swing.tooltip": "Prevents attacking during cooldown.",
+	"chibi.option.sync_attack": "Sync Attack Cooldown",
+	"chibi.option.sync_attack.tooltip": "During server lag, the cooldown also lags.",
+	"chibi.option.combat.warning": "Some multiplayer servers may consider combat mods as an unfair advantage. Use them at your own risk.",
+	"chibi.warn.combat.line1": "Combat mods have direct access to the game,",
+	"chibi.warn.combat.line2": "and can expose or take advantage of hidden",
+	"chibi.warn.combat.line3": "data. 'Prevent Weapon Swing' and 'Sync Cooldown'",
+	"chibi.warn.combat.line4": "are two of such mods, even if sneakily.",
+	"chibi.warn.generic.dont_cheat": "In doubt, ask your favorite server's moderators.",
+	"chibi.warn.experimental": "(Experimental Feature)"
 }

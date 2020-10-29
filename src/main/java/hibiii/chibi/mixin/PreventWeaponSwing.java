@@ -1,6 +1,6 @@
 package hibiii.chibi.mixin;
 import hibiii.chibi.Chibi;
-
+import hibiii.chibi.ChibiConfig;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.util.hit.HitResult;
@@ -25,7 +25,7 @@ public class PreventWeaponSwing {
 	@Inject(at = @At("HEAD"), method = "doAttack()V", cancellable = true)
 	private void attackOnCooldownOverride(CallbackInfo info) {
 		
-		switch (Chibi.config.preventSwing) {
+		switch (ChibiConfig.preventSwing) {
 		// Disables this feature entirely.
 		case OFF:
 			return;

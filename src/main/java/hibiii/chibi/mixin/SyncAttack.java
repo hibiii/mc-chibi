@@ -1,6 +1,6 @@
 package hibiii.chibi.mixin;
 import hibiii.chibi.Chibi;
-
+import hibiii.chibi.ChibiConfig;
 import net.minecraft.entity.player.PlayerEntity;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -21,7 +21,7 @@ public class SyncAttack {
 	// !!! Try this: cooldown correction instead of tick scaling
 	@Inject(method = "tick", at = @At("HEAD"))
 	private void correctLastAttackedTicks (CallbackInfo info) {
-		if (Chibi.config.syncAttack) {
+		if (ChibiConfig.syncAttack) {
 			--this.lastAttackedTicks;
 			milliticks += 1000 * (Chibi.tpsRate / 20.0d);
 			if(milliticks > 1000) {
