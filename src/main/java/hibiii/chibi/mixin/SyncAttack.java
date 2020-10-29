@@ -21,11 +21,13 @@ public class SyncAttack {
 	// !!! Try this: cooldown correction instead of tick scaling
 	@Inject(method = "tick", at = @At("HEAD"))
 	private void correctLastAttackedTicks (CallbackInfo info) {
-		--this.lastAttackedTicks;
-		milliticks += 1000 * (Chibi.tpsRate / 20.0d);
-		if(milliticks > 1000) {
-			this.lastAttackedTicks += milliticks / 1000;
-			milliticks %= 1000;
+		if (Chibi.config.syncAttack) {
+			--this.lastAttackedTicks;
+			milliticks += 1000 * (Chibi.tpsRate / 20.0d);
+			if(milliticks > 1000) {
+				this.lastAttackedTicks += milliticks / 1000;
+				milliticks %= 1000;
+			}
 		}
 	}
 }
