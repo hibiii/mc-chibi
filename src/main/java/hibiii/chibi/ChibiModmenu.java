@@ -2,7 +2,6 @@ package hibiii.chibi;
 
 import io.github.prospector.modmenu.api.ModMenuApi;
 import io.github.prospector.modmenu.api.ConfigScreenFactory;
-import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
 
 public class ChibiModmenu implements ModMenuApi {
 	

@@ -1,6 +1,6 @@
 package hibiii.chibi.mixin;
-import hibiii.chibi.Chibi;
 import hibiii.chibi.ChibiConfig;
+
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.util.hit.HitResult;

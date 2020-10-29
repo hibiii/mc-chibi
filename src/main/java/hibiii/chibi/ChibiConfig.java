@@ -1,20 +1,15 @@
 package hibiii.chibi;
 
-import me.sargunvohra.mcmods.autoconfig1u.ConfigData;
-import me.sargunvohra.mcmods.autoconfig1u.annotation.Config;
-import me.sargunvohra.mcmods.autoconfig1u.annotation.ConfigEntry;
-import me.sargunvohra.mcmods.autoconfig1u.annotation.ConfigEntry.Gui.EnumHandler.EnumDisplayOption;
-import me.shedaniel.clothconfig2.api.ConfigBuilder;
-import me.shedaniel.clothconfig2.api.ConfigCategory;
-import me.shedaniel.clothconfig2.api.ConfigEntryBuilder;
 import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
+import me.shedaniel.clothconfig2.api.ConfigBuilder;
+import me.shedaniel.clothconfig2.api.ConfigEntryBuilder;
+import me.sargunvohra.mcmods.autoconfig1u.ConfigData;
+import me.sargunvohra.mcmods.autoconfig1u.annotation.Config;
 
 @Config(name = "chibi")
-@Config.Gui.Background(value = "textures/environment/end_sky.png")
 public class ChibiConfig implements ConfigData {
 	
 	// PreventWeaponSwing
@@ -41,7 +36,11 @@ public class ChibiConfig implements ConfigData {
 		builder.setGlobalizedExpanded(false);
 		
 		final ConfigEntryBuilder entryBuilder = builder.entryBuilder();
+		
+		// --- Combat --
 		builder.getOrCreateCategory(new TranslatableText("chibi.menu.category.combat"))
+		
+			// Prevent Swing
 			.addEntry(entryBuilder.startEnumSelector(
 					new TranslatableText("chibi.option.prevent_swing"),
 					PreventSwing.class,
@@ -50,6 +49,8 @@ public class ChibiConfig implements ConfigData {
 				.setTooltip(new TranslatableText("chibi.option.prevent_swing.tooltip"))
 				.setSaveConsumer(newValue -> preventSwing = newValue)
 				.build())
+			
+			// Sync Attack
 			.addEntry(entryBuilder.startBooleanToggle(
 					new TranslatableText("chibi.option.sync_attack"),
 					syncAttack)
@@ -57,6 +58,8 @@ public class ChibiConfig implements ConfigData {
 					new TranslatableText("chibi.option.sync_attack.tooltip"),
 					new TranslatableText("chibi.warn.experimental").formatted(Formatting.RED))
 				.build())
+			
+			// Warning
 			.addEntry(entryBuilder.startTextDescription(
 					new TranslatableText ("chibi.option.combat.warning"))
 				.setTooltip(
@@ -66,6 +69,7 @@ public class ChibiConfig implements ConfigData {
 					new TranslatableText("chibi.warn.combat.line4"),
 					new TranslatableText("chibi.warn.generic.dont_cheat").formatted(Formatting.UNDERLINE))
 				.build());
+		
 		return builder.build();
 	}
 }
