@@ -1,4 +1,5 @@
 package hibiii.chibi;
+
 import net.fabricmc.api.ClientModInitializer;
 
 public class Chibi implements ClientModInitializer {
@@ -11,6 +12,7 @@ public class Chibi implements ClientModInitializer {
 	}
 	public static OptionPreventSwing optionPreventSwing = OptionPreventSwing.OFF;
 	
+	// TpsReader
 	public static double tpsRate = 0.0d;
 	public static double tpsMspt = 0.0d;
 	

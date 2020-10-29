@@ -1,12 +1,12 @@
 package hibiii.chibi;
-
 import hibiii.chibi.Chibi.OptionPreventSwing;
-import io.github.prospector.modmenu.api.ConfigScreenFactory;
-import io.github.prospector.modmenu.api.ModMenuApi;
-import me.shedaniel.clothconfig2.api.ConfigBuilder;
-import me.shedaniel.clothconfig2.api.ConfigEntryBuilder;
+
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
+import io.github.prospector.modmenu.api.ModMenuApi;
+import io.github.prospector.modmenu.api.ConfigScreenFactory;
+import me.shedaniel.clothconfig2.api.ConfigBuilder;
+import me.shedaniel.clothconfig2.api.ConfigEntryBuilder;
 
 public class ChibiModmenu implements ModMenuApi {
 	
