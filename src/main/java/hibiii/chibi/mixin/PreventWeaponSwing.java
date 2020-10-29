@@ -25,7 +25,7 @@ public class PreventWeaponSwing {
 	@Inject(at = @At("HEAD"), method = "doAttack()V", cancellable = true)
 	private void attackOnCooldownOverride(CallbackInfo info) {
 		
-		switch (Chibi.optionPreventSwing) {
+		switch (Chibi.config.preventSwing) {
 		// Disables this feature entirely.
 		case OFF:
 			return;
