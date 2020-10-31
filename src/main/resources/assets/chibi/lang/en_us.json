@@ -13,6 +13,12 @@
 	"chibi.warn.combat.line2": "and can expose or take advantage of hidden",
 	"chibi.warn.combat.line3": "data. 'Prevent Weapon Swing' and 'Sync Cooldown'",
 	"chibi.warn.combat.line4": "are two of such mods, even if sneakily.",
+
+	"chibi.menu.category.cosmetic": "Cosmetic",
+	"chibi.option.player_particles": "Show Player Particles",
+	"chibi.option.player_particles.tooltip": "Shows custom particles around your player.",
+
 	"chibi.warn.generic.dont_cheat": "In doubt, ask your favorite server's moderators.",
+	"chibi.warn.generic.client_side": "This feature does not work for others (client-side).",
 	"chibi.warn.experimental": "(Experimental Feature)"
 }

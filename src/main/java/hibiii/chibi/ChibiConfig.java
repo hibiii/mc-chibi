@@ -23,6 +23,9 @@ public class ChibiConfig implements ConfigData {
 	// SyncAttack
 	public static boolean syncAttack = false;
 	
+	// PlayerParticles
+	public static boolean playerParticles = false;
+	
 	// grondag the barbarian? grondag the helpful renderer guy :)
 	// Code made after studying Canvas's menu code
 	public static Screen getScreen (Screen previous) {
@@ -57,6 +60,7 @@ public class ChibiConfig implements ConfigData {
 				.setTooltip(
 					new TranslatableText("chibi.option.sync_attack.tooltip"),
 					new TranslatableText("chibi.warn.experimental").formatted(Formatting.RED))
+				.setSaveConsumer(newValue -> syncAttack = newValue)
 				.build())
 			
 			// Warning
@@ -67,7 +71,20 @@ public class ChibiConfig implements ConfigData {
 					new TranslatableText("chibi.warn.combat.line2"),
 					new TranslatableText("chibi.warn.combat.line3"),
 					new TranslatableText("chibi.warn.combat.line4"),
-					new TranslatableText("chibi.warn.generic.dont_cheat").formatted(Formatting.UNDERLINE))
+					new TranslatableText("chibi.warn.generic.dont_cheat").formatted(Formatting.YELLOW).formatted(Formatting.UNDERLINE))
+				.build());
+		
+		// --- Cosmetic --
+		builder.getOrCreateCategory(new TranslatableText("chibi.menu.category.cosmetic"))
+		
+			// Player Particles
+			.addEntry(entryBuilder.startBooleanToggle(
+					new TranslatableText("chibi.option.player_particles"),
+					playerParticles)
+				.setTooltip(
+						new TranslatableText("chibi.option.player_particles.tooltip"),
+						new TranslatableText("chibi.warn.generic.client_side").formatted(Formatting.GRAY))
+				.setSaveConsumer(newValue -> playerParticles = newValue)
 				.build());
 		
 		return builder.build();
