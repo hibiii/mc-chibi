@@ -25,6 +25,18 @@ public class ChibiConfig implements ConfigData {
 	
 	// PlayerParticles
 	public boolean playerParticles = false;
+	public enum ParticleType {
+		ASH,
+		ENDER_SMOKE, // Portal
+		GREEN_SPARKLES, // Composter
+		HEART,
+		MYCELIUM,
+		PURPLE_SPARKLES, // Witch
+		WHITE_ASH,
+		WHITE_SPARKLES // End rod
+	}
+	public ParticleType particleType = ParticleType.HEART;
+	public int particleInterval = 1;
 	
 	// grondag the barbarian? grondag the helpful renderer guy :)
 	// Code made after studying Canvas's menu code
@@ -85,6 +97,19 @@ public class ChibiConfig implements ConfigData {
 						new TranslatableText("chibi.option.player_particles.tooltip"),
 						new TranslatableText("chibi.warn.generic.client_side").formatted(Formatting.GRAY))
 				.setSaveConsumer(newValue -> playerParticles = newValue)
+				.build())
+			.addEntry(entryBuilder.startEnumSelector(
+					new TranslatableText("chibi.option.particle_type"),
+					ParticleType.class,
+					particleType)
+				.setEnumNameProvider(value -> new TranslatableText("chibi.option.particle." + value.toString()))
+				.setSaveConsumer(newValue -> particleType = newValue)
+				.build())
+			.addEntry(entryBuilder.startIntSlider(
+					new TranslatableText("chibi.option.particle_intensity"),
+					21 - particleInterval,
+					1, 20)
+				.setSaveConsumer(newValue -> particleInterval = 21 - newValue)
 				.build());
 		
 		return builder.build();

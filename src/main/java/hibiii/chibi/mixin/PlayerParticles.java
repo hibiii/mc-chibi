@@ -5,6 +5,7 @@ import java.util.Random;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.world.ClientWorld;
+import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -22,16 +23,36 @@ public class PlayerParticles {
 	@Shadow
 	public ClientPlayerEntity player;
 	
+	@Shadow
+	private boolean paused;
+	
 	protected final Random random = new Random();
+	private ParticleEffect selectedParticle;
+	
+	private short tickCount = 0;
 	
 	@Inject(method = "tick", at = @At("HEAD"))
 	private void addParticles(CallbackInfo info) {
-		if (!Chibi.config.playerParticles || world == null || player == null || player.isInvisible())
+		if (!Chibi.config.playerParticles || world == null || paused || player == null || player.isInvisible())
 			return;
-		world.addParticle(ParticleTypes.WITCH,
+		tickCount++;
+		if (tickCount % Chibi.config.particleInterval == 0) {
+			// I don't need to reset tickCount as its amplitude doesn't matter, I can let it overflow in 54 min and some
+			switch (Chibi.config.particleType) {
+				case ASH: selectedParticle = ParticleTypes.ASH; break;
+				case ENDER_SMOKE: selectedParticle = ParticleTypes.PORTAL; break;
+				case GREEN_SPARKLES: selectedParticle = ParticleTypes.COMPOSTER; break;
+				case HEART: selectedParticle = ParticleTypes.HEART; break;
+				case MYCELIUM: selectedParticle = ParticleTypes.MYCELIUM; break;
+				case PURPLE_SPARKLES: selectedParticle = ParticleTypes.WITCH; break;
+				case WHITE_ASH: selectedParticle = ParticleTypes.WHITE_ASH; break;
+				case WHITE_SPARKLES: selectedParticle = ParticleTypes.END_ROD; break;		
+			}
+			world.addParticle(selectedParticle,
 				player.getX() + this.random.nextGaussian() * 0.3,
 				player.getY() + this.random.nextDouble() * player.getBoundingBox().getYLength(),
 				player.getZ() + this.random.nextGaussian() * 0.3,
 				0.0, 0.0, 0.0);
+		}
 	}
 }
