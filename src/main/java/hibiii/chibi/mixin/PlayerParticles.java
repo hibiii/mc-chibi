@@ -1,5 +1,5 @@
 package hibiii.chibi.mixin;
-import hibiii.chibi.ChibiConfig;
+import hibiii.chibi.Chibi;
 
 import java.util.Random;
 import net.minecraft.client.MinecraftClient;
@@ -26,13 +26,12 @@ public class PlayerParticles {
 	
 	@Inject(method = "tick", at = @At("HEAD"))
 	private void addParticles(CallbackInfo info) {
-		if (!ChibiConfig.playerParticles)
-			return;
-		if (world == null || player == null)
+		if (!Chibi.config.playerParticles || world == null || player == null || player.isInvisible())
 			return;
 		world.addParticle(ParticleTypes.WITCH,
-				player.getX() + this.random.nextGaussian() * 0.12999999523162842,
-				player.getY() + 0.9 + this.random.nextGaussian() * 0.12999999523162842,
-				player.getZ() + this.random.nextGaussian() * 0.12999999523162842, 0.0, 0.0, 0.0);
+				player.getX() + this.random.nextGaussian() * 0.3,
+				player.getY() + this.random.nextDouble() * player.getBoundingBox().getYLength(),
+				player.getZ() + this.random.nextGaussian() * 0.3,
+				0.0, 0.0, 0.0);
 	}
 }

@@ -18,17 +18,17 @@ public class ChibiConfig implements ConfigData {
 		LENIENT,
 		STRICT
 	}
-	public static PreventSwing preventSwing = PreventSwing.OFF;
+	public PreventSwing preventSwing = PreventSwing.OFF;
 	
 	// SyncAttack
-	public static boolean syncAttack = false;
+	public boolean syncAttack = false;
 	
 	// PlayerParticles
-	public static boolean playerParticles = false;
+	public boolean playerParticles = false;
 	
 	// grondag the barbarian? grondag the helpful renderer guy :)
 	// Code made after studying Canvas's menu code
-	public static Screen getScreen (Screen previous) {
+	public Screen getScreen (Screen previous) {
 		final ConfigBuilder builder = ConfigBuilder.create()
 				.setParentScreen(previous)
 				.setTitle(new TranslatableText("chibi.menu.title"))
