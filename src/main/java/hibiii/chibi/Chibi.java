@@ -1,7 +1,8 @@
 package hibiii.chibi;
 
 import net.fabricmc.api.ClientModInitializer;
-import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
+import me.sargunvohra.mcmods.autoconfig1u.annotation.Config;
+import me.sargunvohra.mcmods.autoconfig1u.serializer.ConfigSerializer.SerializationException;
 import me.sargunvohra.mcmods.autoconfig1u.serializer.Toml4jConfigSerializer;
 
 public class Chibi implements ClientModInitializer {
@@ -13,9 +14,15 @@ public class Chibi implements ClientModInitializer {
 	// Config
 	public static ChibiConfig config;
 	
+	public static Toml4jConfigSerializer<ChibiConfig> configSerializer =
+			new Toml4jConfigSerializer<ChibiConfig>(ChibiConfig.class.getAnnotation(Config.class), ChibiConfig.class);
+	
 	@Override
 	public void onInitializeClient() {
-		AutoConfig.register(ChibiConfig.class,Toml4jConfigSerializer::new);
-		config = AutoConfig.getConfigHolder(ChibiConfig.class).getConfig();
+		try {
+			config = configSerializer.deserialize();
+		} catch (SerializationException e) {
+			e.printStackTrace();
+		}
 	}
 }

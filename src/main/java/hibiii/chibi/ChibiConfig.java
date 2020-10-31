@@ -8,6 +8,7 @@ import me.shedaniel.clothconfig2.api.ConfigBuilder;
 import me.shedaniel.clothconfig2.api.ConfigEntryBuilder;
 import me.sargunvohra.mcmods.autoconfig1u.ConfigData;
 import me.sargunvohra.mcmods.autoconfig1u.annotation.Config;
+import me.sargunvohra.mcmods.autoconfig1u.serializer.ConfigSerializer.SerializationException;
 
 @Config(name = "chibi")
 public class ChibiConfig implements ConfigData {
@@ -44,7 +45,7 @@ public class ChibiConfig implements ConfigData {
 		final ConfigBuilder builder = ConfigBuilder.create()
 				.setParentScreen(previous)
 				.setTitle(new TranslatableText("chibi.menu.title"))
-				.setDefaultBackgroundTexture(new Identifier("textures/environment/end_sky.png"))
+				.setDefaultBackgroundTexture(new Identifier("chibi:menu_background.png"))
 				.setAlwaysShowTabs(false)
 				.setDoesConfirmSave(false);
 		builder.setGlobalized(true);
@@ -60,6 +61,7 @@ public class ChibiConfig implements ConfigData {
 					new TranslatableText("chibi.option.prevent_swing"),
 					PreventSwing.class,
 					preventSwing)
+				.setDefaultValue(PreventSwing.OFF)
 				.setEnumNameProvider( value -> new TranslatableText("chibi.option.prevent_swing." + value.toString()))
 				.setTooltip(new TranslatableText("chibi.option.prevent_swing.tooltip"))
 				.setSaveConsumer(newValue -> preventSwing = newValue)
@@ -69,6 +71,7 @@ public class ChibiConfig implements ConfigData {
 			.addEntry(entryBuilder.startBooleanToggle(
 					new TranslatableText("chibi.option.sync_attack"),
 					syncAttack)
+				.setDefaultValue(false)
 				.setTooltip(
 					new TranslatableText("chibi.option.sync_attack.tooltip"),
 					new TranslatableText("chibi.warn.experimental").formatted(Formatting.RED))
@@ -93,6 +96,7 @@ public class ChibiConfig implements ConfigData {
 			.addEntry(entryBuilder.startBooleanToggle(
 					new TranslatableText("chibi.option.player_particles"),
 					playerParticles)
+				.setDefaultValue(false)
 				.setTooltip(
 						new TranslatableText("chibi.option.player_particles.tooltip"),
 						new TranslatableText("chibi.warn.generic.client_side").formatted(Formatting.GRAY))
@@ -102,6 +106,7 @@ public class ChibiConfig implements ConfigData {
 					new TranslatableText("chibi.option.particle_type"),
 					ParticleType.class,
 					particleType)
+				.setDefaultValue(ParticleType.HEART)
 				.setEnumNameProvider(value -> new TranslatableText("chibi.option.particle." + value.toString()))
 				.setSaveConsumer(newValue -> particleType = newValue)
 				.build())
@@ -109,8 +114,17 @@ public class ChibiConfig implements ConfigData {
 					new TranslatableText("chibi.option.particle_intensity"),
 					21 - particleInterval,
 					1, 20)
+				.setDefaultValue(10)
 				.setSaveConsumer(newValue -> particleInterval = 21 - newValue)
 				.build());
+		
+		builder.setSavingRunnable(() -> {
+			try {
+				Chibi.configSerializer.serialize(this);
+			} catch (SerializationException e) {
+				e.printStackTrace();
+			}
+		});
 		
 		return builder.build();
 	}
