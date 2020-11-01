@@ -6,6 +6,8 @@ import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 import me.shedaniel.clothconfig2.api.ConfigBuilder;
 import me.shedaniel.clothconfig2.api.ConfigEntryBuilder;
+import me.shedaniel.clothconfig2.impl.builders.SubCategoryBuilder;
+import me.shedaniel.math.Color;
 import me.sargunvohra.mcmods.autoconfig1u.ConfigData;
 import me.sargunvohra.mcmods.autoconfig1u.annotation.Config;
 import me.sargunvohra.mcmods.autoconfig1u.serializer.ConfigSerializer.SerializationException;
@@ -42,10 +44,18 @@ public class ChibiConfig implements ConfigData {
 		MYCELIUM,
 		PURPLE_SPARKLES, // Witch
 		WHITE_ASH,
-		WHITE_SPARKLES   // End rod
+		WHITE_SPARKLES,  // End rod
+		CUSTOM
 	}
 	public ParticleType particleType = ParticleType.HEART;
 	public int particleInterval = 11;
+	public class CustomParticle {
+		public float r = 0.5f;
+		public float g = 0.5f;
+		public float b = 0.5f;
+		public float scale = 1.0f;		
+	}
+	public CustomParticle customParticle = new CustomParticle();
 	
 	// grondag the barbarian? grondag the helpful renderer guy :)
 	// Code made after studying Canvas's menu code
@@ -100,6 +110,30 @@ public class ChibiConfig implements ConfigData {
 				.build());
 		
 		// --- Cosmetic --
+		// We are building the Custom Particle subcategory first just so we don't have to store the cosmetic
+		// category in its own field. C-tier memory management!!!q
+		SubCategoryBuilder customParticleSubcategory = entryBuilder.startSubCategory(new TranslatableText("chibi.option.custom_particle"));
+		// Custom Particle Color
+		customParticleSubcategory.add(0, entryBuilder.startColorField(
+				new TranslatableText("chibi.option.custom_particle.color"),
+				Color.ofRGB(customParticle.r, customParticle.g, customParticle.b))
+			.setDefaultValue(0x808080)
+			.setSaveConsumer2(newValue -> {
+				customParticle.r = (float)newValue.getRed() / 255;
+				customParticle.g = (float)newValue.getGreen() / 255;
+				customParticle.b = (float)newValue.getBlue() / 255; })
+			.build());
+		// Custom Particle Scale
+		customParticleSubcategory.add(1, entryBuilder.startFloatField(
+				new TranslatableText("chibi.option.custom_particle.scale"),
+				customParticle.scale)
+			.setDefaultValue(1.0f)
+			.setMin(0.1f)
+			.setMax(4.0f)
+			.setSaveConsumer(newValue -> customParticle.scale = newValue)
+			.build());
+		
+		// The category itself
 		builder.getOrCreateCategory(new TranslatableText("chibi.menu.category.cosmetic"))
 		
 			// Player Particles
@@ -130,7 +164,11 @@ public class ChibiConfig implements ConfigData {
 					1, 20)
 				.setDefaultValue(10)
 				.setSaveConsumer(newValue -> particleInterval = 21 - newValue)
-				.build());
+				.build())
+			
+			.addEntry(customParticleSubcategory.build());
+			
+
 		
 		// Since I'm not using AutoConfig properly, this will do.
 		builder.setSavingRunnable(() -> {

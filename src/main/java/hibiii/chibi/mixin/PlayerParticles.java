@@ -5,6 +5,7 @@ import java.util.Random;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.world.ClientWorld;
+import net.minecraft.particle.DustParticleEffect;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 import org.spongepowered.asm.mixin.Mixin;
@@ -46,7 +47,12 @@ public class PlayerParticles {
 				case MYCELIUM: selectedParticle = ParticleTypes.MYCELIUM; break;
 				case PURPLE_SPARKLES: selectedParticle = ParticleTypes.WITCH; break;
 				case WHITE_ASH: selectedParticle = ParticleTypes.WHITE_ASH; break;
-				case WHITE_SPARKLES: selectedParticle = ParticleTypes.END_ROD; break;		
+				case WHITE_SPARKLES: selectedParticle = ParticleTypes.END_ROD; break;
+				case CUSTOM: selectedParticle = new DustParticleEffect(
+					Chibi.config.customParticle.r,
+					Chibi.config.customParticle.g,
+					Chibi.config.customParticle.b,
+					Chibi.config.customParticle.scale); break;
 			}
 			world.addParticle(selectedParticle,
 				player.getX() + this.random.nextGaussian() * 0.3,

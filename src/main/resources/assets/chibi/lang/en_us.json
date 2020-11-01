@@ -35,6 +35,9 @@
 		"chibi.option.particle.WHITE_SPARKLES": "White Sparkles",
 		"chibi.option.particle.CUSTOM": "Custom...",
 	"chibi.option.particle_intensity": "Particle Intensity",
+	"chibi.option.custom_particle": "Custom Particles",
+		"chibi.option.custom_particle.color": "Color",
+		"chibi.option.custom_particle.scale": "Scale",
 
 	"chibi.warn.generic.dont_cheat": "In doubt, ask your favorite server's moderators.",
 	"chibi.warn.generic.client_side": "This feature does not work for others (client-side).",
