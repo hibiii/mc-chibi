@@ -36,9 +36,9 @@ public class SyncAttack {
 		}
 		// If you're exclusively on CC, you're not on TS.
 		if (Chibi.config.syncAttack != ChibiConfig.SyncAttack.TICK_SCALING) {
-			if(Chibi.tpsElapsedTicks > 0) {
-				this.lastAttackedTicks -= Chibi.tpsElapsedTicks;
-				Chibi.tpsElapsedTicks = 0;
+			if(Chibi.syncAttackElapsedTicks > 0) {
+				this.lastAttackedTicks -= Chibi.syncAttackElapsedTicks;
+				Chibi.syncAttackElapsedTicks = 0;
 			}
 		}
 		// If you're on hybrid, you are not exclusively on TS and your are not exclusively on CC.

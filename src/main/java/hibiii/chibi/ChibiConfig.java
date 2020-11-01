@@ -10,6 +10,8 @@ import me.sargunvohra.mcmods.autoconfig1u.ConfigData;
 import me.sargunvohra.mcmods.autoconfig1u.annotation.Config;
 import me.sargunvohra.mcmods.autoconfig1u.serializer.ConfigSerializer.SerializationException;
 
+// Configuration
+// Partially operated by AutoConfig, serializable, a frankenstein.
 @Config(name = "chibi")
 public class ChibiConfig implements ConfigData {
 	
@@ -34,16 +36,16 @@ public class ChibiConfig implements ConfigData {
 	public boolean playerParticles = false;
 	public enum ParticleType {
 		ASH,
-		ENDER_SMOKE, // Portal
-		GREEN_SPARKLES, // Composter
+		ENDER_SMOKE,     // Portal
+		GREEN_SPARKLES,  // Composter
 		HEART,
 		MYCELIUM,
 		PURPLE_SPARKLES, // Witch
 		WHITE_ASH,
-		WHITE_SPARKLES // End rod
+		WHITE_SPARKLES   // End rod
 	}
 	public ParticleType particleType = ParticleType.HEART;
-	public int particleInterval = 1;
+	public int particleInterval = 11;
 	
 	// grondag the barbarian? grondag the helpful renderer guy :)
 	// Code made after studying Canvas's menu code
@@ -54,7 +56,7 @@ public class ChibiConfig implements ConfigData {
 				.setDefaultBackgroundTexture(new Identifier("chibi:menu_background.png"))
 				.setAlwaysShowTabs(false)
 				.setDoesConfirmSave(false);
-		builder.setGlobalized(true);
+		builder.setGlobalized(true);           // Makes the config a single page and adds the sidebar
 		builder.setGlobalizedExpanded(false);
 		
 		final ConfigEntryBuilder entryBuilder = builder.entryBuilder();
@@ -110,6 +112,8 @@ public class ChibiConfig implements ConfigData {
 						new TranslatableText("chibi.warn.generic.client_side").formatted(Formatting.GRAY))
 				.setSaveConsumer(newValue -> playerParticles = newValue)
 				.build())
+			
+			// Particle Types
 			.addEntry(entryBuilder.startEnumSelector(
 					new TranslatableText("chibi.option.particle_type"),
 					ParticleType.class,
@@ -118,6 +122,8 @@ public class ChibiConfig implements ConfigData {
 				.setEnumNameProvider(value -> new TranslatableText("chibi.option.particle." + value.toString()))
 				.setSaveConsumer(newValue -> particleType = newValue)
 				.build())
+			
+			// Particle Intensity
 			.addEntry(entryBuilder.startIntSlider(
 					new TranslatableText("chibi.option.particle_intensity"),
 					21 - particleInterval,
@@ -126,6 +132,7 @@ public class ChibiConfig implements ConfigData {
 				.setSaveConsumer(newValue -> particleInterval = 21 - newValue)
 				.build());
 		
+		// Since I'm not using AutoConfig properly, this will do.
 		builder.setSavingRunnable(() -> {
 			try {
 				Chibi.configSerializer.serialize(this);
