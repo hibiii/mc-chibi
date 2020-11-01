@@ -22,7 +22,13 @@ public class ChibiConfig implements ConfigData {
 	public PreventSwing preventSwing = PreventSwing.OFF;
 	
 	// SyncAttack
-	public boolean syncAttack = false;
+	public enum SyncAttack {
+		OFF,
+		TICK_SCALING,
+		COOLDOWN_CORRECTION,
+		HYBRID
+	}
+	public SyncAttack syncAttack = SyncAttack.OFF;
 	
 	// PlayerParticles
 	public boolean playerParticles = false;
@@ -68,10 +74,12 @@ public class ChibiConfig implements ConfigData {
 				.build())
 			
 			// Sync Attack
-			.addEntry(entryBuilder.startBooleanToggle(
+			.addEntry(entryBuilder.startEnumSelector(
 					new TranslatableText("chibi.option.sync_attack"),
+					SyncAttack.class,
 					syncAttack)
-				.setDefaultValue(false)
+				.setDefaultValue(SyncAttack.OFF)
+				.setEnumNameProvider(value -> new TranslatableText("chibi.option.sync_attack." + value.toString()))
 				.setTooltip(
 					new TranslatableText("chibi.option.sync_attack.tooltip"),
 					new TranslatableText("chibi.warn.experimental").formatted(Formatting.RED))

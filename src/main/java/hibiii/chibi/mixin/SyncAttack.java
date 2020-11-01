@@ -1,5 +1,6 @@
 package hibiii.chibi.mixin;
 import hibiii.chibi.Chibi;
+import hibiii.chibi.ChibiConfig;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -20,11 +21,12 @@ public class SyncAttack {
 	protected int lastAttackedTicks;
 	private int milliticks = 0;
 
-	// I'll scale client ticking to the server's ticking
-	// !!! Try this: cooldown correction instead of tick scaling
+	// Supports tick scaling and cooldown correction
 	@Inject(method = "tick", at = @At("HEAD"))
 	private void correctLastAttackedTicks (CallbackInfo info) {
-		if (Chibi.config.syncAttack) {
+		if (Chibi.config.syncAttack == ChibiConfig.SyncAttack.OFF) return;
+		// If you're exclusively on TS, you're not on CC.
+		if (Chibi.config.syncAttack != ChibiConfig.SyncAttack.COOLDOWN_CORRECTION) {
 			--this.lastAttackedTicks;
 			milliticks += 1000 * (Chibi.tpsRate / 20.0d);
 			if(milliticks > 1000) {
@@ -32,5 +34,13 @@ public class SyncAttack {
 				milliticks %= 1000;
 			}
 		}
+		// If you're exclusively on CC, you're not on TS.
+		if (Chibi.config.syncAttack != ChibiConfig.SyncAttack.TICK_SCALING) {
+			if(Chibi.tpsElapsedTicks > 0) {
+				this.lastAttackedTicks -= Chibi.tpsElapsedTicks;
+				Chibi.tpsElapsedTicks = 0;
+			}
+		}
+		// If you're on hybrid, you are not exclusively on TS and your are not exclusively on CC.
 	}
 }

@@ -41,6 +41,7 @@ public class TpsReader {
 		Chibi.tpsRate = Chibi.tpsMspt < 50 ? 20.0d : (1000d / Chibi.tpsMspt);
 		worldTickLast = worldTick;
 		realTimeLast = realTime;
+		Chibi.tpsElapsedTicks += deltaTick;
 
 		// Reading MSPT is useless unless it's laggy because I'm not measuring the workload on the server.
 	}

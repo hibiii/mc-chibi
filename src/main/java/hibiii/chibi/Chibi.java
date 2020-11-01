@@ -10,6 +10,7 @@ public class Chibi implements ClientModInitializer {
 	// TpsReader
 	public static double tpsRate = 0.0d;
 	public static double tpsMspt = 0.0d;
+	public static long tpsElapsedTicks = 0l;
 	
 	// Config
 	public static ChibiConfig config;
