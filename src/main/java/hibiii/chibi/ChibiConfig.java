@@ -1,9 +1,11 @@
 package hibiii.chibi;
 
 import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.Vec3d;
 import me.shedaniel.clothconfig2.api.ConfigBuilder;
 import me.shedaniel.clothconfig2.api.ConfigEntryBuilder;
 import me.shedaniel.clothconfig2.impl.builders.SubCategoryBuilder;
@@ -49,6 +51,9 @@ public class ChibiConfig implements ConfigData {
 	}
 	public ParticleType particleType = ParticleType.HEART;
 	public int particleInterval = 11;
+	public double particleVelocityX = 0.0;
+	public double particleVelocityY = 0.0;
+	public double particleVelocityZ = 0.0;
 	public class CustomParticle {
 		public float r = 0.5f;
 		public float g = 0.5f;
@@ -164,6 +169,32 @@ public class ChibiConfig implements ConfigData {
 					1, 20)
 				.setDefaultValue(10)
 				.setSaveConsumer(newValue -> particleInterval = 21 - newValue)
+				.build())
+
+			// Particle Velocity
+			.addEntry(entryBuilder.startDoubleField(
+					new TranslatableText("chibi.option.particle_velocity", Text.of("X")),
+					particleVelocityX)
+				.setDefaultValue(0.0)
+				.setMin(-10.0)
+				.setMax(10.0)
+				.setSaveConsumer(newValue -> particleVelocityX = newValue)
+				.build())
+			.addEntry(entryBuilder.startDoubleField(
+					new TranslatableText("chibi.option.particle_velocity", Text.of("Y")),
+					particleVelocityY)
+				.setDefaultValue(0.0)
+				.setMin(-10.0)
+				.setMax(10.0)
+				.setSaveConsumer(newValue -> particleVelocityY = newValue)
+				.build())
+			.addEntry(entryBuilder.startDoubleField(
+					new TranslatableText("chibi.option.particle_velocity", Text.of("Z")),
+					particleVelocityZ)
+				.setDefaultValue(0.0)
+				.setMin(-10.0)
+				.setMax(10.0)
+				.setSaveConsumer(newValue -> particleVelocityZ = newValue)
 				.build())
 			
 			.addEntry(customParticleSubcategory.build());

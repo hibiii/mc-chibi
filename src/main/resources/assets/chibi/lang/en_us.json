@@ -35,6 +35,7 @@
 		"chibi.option.particle.WHITE_SPARKLES": "White Sparkles",
 		"chibi.option.particle.CUSTOM": "Custom...",
 	"chibi.option.particle_intensity": "Particle Intensity",
+	"chibi.option.particle_velocity": "%s Velocity",
 	"chibi.option.custom_particle": "Custom Particles",
 		"chibi.option.custom_particle.color": "Color",
 		"chibi.option.custom_particle.scale": "Scale",
