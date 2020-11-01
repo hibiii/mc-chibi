@@ -1,6 +1,8 @@
 package hibiii.chibi.mixin;
 import hibiii.chibi.Chibi;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.network.packet.s2c.play.WorldTimeUpdateS2CPacket;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -9,6 +11,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 // TpsReader, a simple utility for reading a server's TPS.
 // It's obviously not dead accurate, but a rough estimate is given.
+@Environment(EnvType.CLIENT)
 @Mixin(net.minecraft.client.network.ClientPlayNetworkHandler.class)
 public class TpsReader {
 	
