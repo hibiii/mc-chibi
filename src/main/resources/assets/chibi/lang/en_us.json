@@ -22,6 +22,8 @@
 	"chibi.warn.combat.line4": "are two of such mods, even if sneakily.",
 
 	"chibi.menu.category.cosmetic": "Cosmetic",
+	"chibi.option.show_own_name": "Show Own Name",
+	"chibi.option.show_own_name.tooltip": "Displays your username when you use third-person cameras.",
 	"chibi.option.player_particles": "Show Player Particles",
 	"chibi.option.player_particles.tooltip": "Shows custom particles around your player.",
 	"chibi.option.particle_type": "Particle Type",

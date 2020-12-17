@@ -5,6 +5,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+import hibiii.chibi.Chibi;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.entity.EntityRenderDispatcher;
 import net.minecraft.client.render.entity.EntityRenderer;
@@ -22,6 +23,8 @@ public abstract class ShowOwnName<T extends LivingEntity, M extends EntityModel<
 
 	@Inject(method = "hasLabel", at = @At("HEAD"), cancellable = true)
 	public void showOwnName(T livingEntity, CallbackInfoReturnable<Boolean> cir) {
+		if(Chibi.config.hideOwnName)
+			return;
 		MinecraftClient client = MinecraftClient.getInstance();
 		if (livingEntity == client.cameraEntity)
 			cir.setReturnValue(true);

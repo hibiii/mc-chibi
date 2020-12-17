@@ -36,6 +36,9 @@ public class ChibiConfig implements ConfigData {
 	}
 	public SyncAttack syncAttack = SyncAttack.OFF;
 	
+	// ShowOwnName
+	public boolean hideOwnName = true;
+	
 	// PlayerParticles
 	public boolean playerParticles = false;
 	public enum ParticleType {
@@ -141,6 +144,16 @@ public class ChibiConfig implements ConfigData {
 		// The category itself
 		builder.getOrCreateCategory(new TranslatableText("chibi.menu.category.cosmetic"))
 		
+			// Shown Own Name
+			.addEntry(entryBuilder.startBooleanToggle(
+					new TranslatableText("chibi.option.show_own_name"),
+					!hideOwnName)
+				.setDefaultValue(false)
+				.setTooltip(
+						new TranslatableText("chibi.option.show_own_name.tooltip"))
+				.setSaveConsumer(newValue -> hideOwnName = !newValue)
+				.build())
+			
 			// Player Particles
 			.addEntry(entryBuilder.startBooleanToggle(
 					new TranslatableText("chibi.option.player_particles"),
