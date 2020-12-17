@@ -35,7 +35,7 @@
     "modupdater": {
       "strategy": "github",
       "owner":"Hibiii",
-      "repository":"mc-chibi"
+      "repository":"Chibi"
     }
   }
 }
