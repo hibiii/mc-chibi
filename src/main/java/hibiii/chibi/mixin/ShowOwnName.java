@@ -26,7 +26,7 @@ public abstract class ShowOwnName<T extends LivingEntity, M extends EntityModel<
 		if(Chibi.config.hideOwnName)
 			return;
 		MinecraftClient client = MinecraftClient.getInstance();
-		if (livingEntity == client.cameraEntity)
+		if (MinecraftClient.isHudEnabled() && livingEntity == client.cameraEntity)
 			cir.setReturnValue(true);
 	}
 }
