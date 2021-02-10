@@ -39,6 +39,9 @@ public class ChibiConfig implements ConfigData {
 	// ShowOwnName
 	public boolean hideOwnName = true;
 	
+	// WaveAway
+	public boolean rightClickWave = false;
+	
 	// PlayerParticles
 	public boolean playerParticles = false;
 	public enum ParticleType {
@@ -104,6 +107,17 @@ public class ChibiConfig implements ConfigData {
 					new TranslatableText("chibi.option.sync_attack.tooltip"),
 					new TranslatableText("chibi.warn.experimental").formatted(Formatting.RED))
 				.setSaveConsumer(newValue -> syncAttack = newValue)
+				.build())
+			
+			// Wave Away
+			.addEntry(entryBuilder.startBooleanToggle(
+					new TranslatableText("chibi.option.wave_away"),
+					rightClickWave)
+				.setDefaultValue(false)
+				.setTooltip(
+					new TranslatableText("chibi.option.wave_away.tooltip"),
+					new TranslatableText("chibi.warn.generic.dont_cheat").formatted(Formatting.YELLOW).formatted(Formatting.UNDERLINE))
+				.setSaveConsumer(newValue -> rightClickWave = newValue)
 				.build())
 			
 			// Warning

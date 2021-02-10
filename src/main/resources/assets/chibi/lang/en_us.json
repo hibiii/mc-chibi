@@ -14,6 +14,9 @@
 		"chibi.option.sync_attack.COOLDOWN_CORRECTION": "Cooldown Correction",
 		"chibi.option.sync_attack.HYBRID": "Hybrid",
 	"chibi.option.sync_attack.tooltip": "During server lag, the cooldown also lags.",
+	
+	"chibi.option.wave_away": "Use to Wave Off-Hand",
+	"chibi.option.wave_away.tooltip": "Swinging your hand for no reason may trigger anti-cheats.",
 		
 	"chibi.option.combat.warning": "Some multiplayer servers may consider combat mods as an unfair advantage. Use them at your own risk.",
 	"chibi.warn.combat.line1": "Combat mods have direct access to the game,",
@@ -44,5 +47,9 @@
 
 	"chibi.warn.generic.dont_cheat": "In doubt, ask your favorite server's moderators.",
 	"chibi.warn.generic.client_side": "This feature does not work for others (client-side).",
-	"chibi.warn.experimental": "(Experimental Feature)"
+	"chibi.warn.experimental": "(Experimental Feature)",
+	
+	"chibi.key.walk_modifier": "Walk Slowly",
+	"chibi.key.wave_main_hand": "Wave with Main Hand",
+	"chibi.key.wave_off_hand": "Wave with Off Hand"
 }
