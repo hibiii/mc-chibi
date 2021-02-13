@@ -5,7 +5,6 @@ import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.math.Vec3d;
 import me.shedaniel.clothconfig2.api.ConfigBuilder;
 import me.shedaniel.clothconfig2.api.ConfigEntryBuilder;
 import me.shedaniel.clothconfig2.impl.builders.SubCategoryBuilder;
@@ -67,6 +66,9 @@ public class ChibiConfig implements ConfigData {
 		public float scale = 1.0f;		
 	}
 	public CustomParticle customParticle = new CustomParticle();
+	
+	// OverAllergic
+	public boolean overworldAllergyNot = true;
 	
 	// grondag the barbarian? grondag the helpful renderer guy :)
 	// Code made after studying Canvas's menu code
@@ -224,7 +226,13 @@ public class ChibiConfig implements ConfigData {
 				.setSaveConsumer(newValue -> particleVelocityZ = newValue)
 				.build())
 			
-			.addEntry(customParticleSubcategory.build());
+			.addEntry(customParticleSubcategory.build())
+			.addEntry(entryBuilder.startBooleanToggle(
+					new TranslatableText("chibi.option.overworld_allergy"),
+					!overworldAllergyNot)
+				.setDefaultValue(false)
+				.setSaveConsumer(newValue -> overworldAllergyNot = !newValue)
+				.build());
 			
 
 		
