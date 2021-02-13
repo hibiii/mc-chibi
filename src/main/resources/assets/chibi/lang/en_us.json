@@ -45,6 +45,7 @@
 		"chibi.option.custom_particle.color": "Color",
 		"chibi.option.custom_particle.scale": "Scale",
 	"chibi.option.overworld_allergy": "Overworld Allergy",
+	"chibi.option.blackheart": "Blackheart",
 
 	"chibi.warn.generic.dont_cheat": "In doubt, ask your favorite server's moderators.",
 	"chibi.warn.generic.client_side": "This feature does not work for others (client-side).",
