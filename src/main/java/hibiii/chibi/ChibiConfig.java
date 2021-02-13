@@ -66,6 +66,7 @@ public class ChibiConfig implements ConfigData {
 		public float scale = 1.0f;		
 	}
 	public CustomParticle customParticle = new CustomParticle();
+	public boolean particlesOverworldOnly = false;
 	
 	// OverAllergic
 	public boolean overworldAllergyNot = true;
@@ -241,6 +242,12 @@ public class ChibiConfig implements ConfigData {
 					blackheart)
 				.setDefaultValue(false)
 				.setSaveConsumer(newValue -> blackheart = newValue)
+				.build())
+			.addEntry(entryBuilder.startBooleanToggle(
+					new TranslatableText("chibi.option.overworld_particles"),
+					particlesOverworldOnly)
+				.setDefaultValue(false)
+				.setSaveConsumer(newValue -> particlesOverworldOnly = newValue)
 				.build());
 			
 

@@ -36,6 +36,8 @@ public class PlayerParticles {
 	private void addParticles(CallbackInfo info) {
 		if (!Chibi.config.playerParticles || world == null || paused || player == null || player.isInvisible())
 			return;
+		if(Chibi.config.particlesOverworldOnly && !world.getDimension().isBedWorking())
+			return;
 		tickCount++;
 		if (tickCount % Chibi.config.particleInterval == 0) {
 			// I don't need to reset tickCount as its amplitude doesn't matter, I can let it overflow in 54 min and some
