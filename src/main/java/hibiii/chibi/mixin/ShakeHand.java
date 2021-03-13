@@ -14,7 +14,7 @@ public class ShakeHand {
 	@Redirect(method = "renderItem(FLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider$Immediate;Lnet/minecraft/client/network/ClientPlayerEntity;I)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/network/ClientPlayerEntity;getYaw(F)F"))
 	private float shiveringPlayer(ClientPlayerEntity in, float tickDelta) {
 		if(!Chibi.config.overworldAllergyNot & in.world.getDimension().isBedWorking()) {
-			return in.getYaw(tickDelta) + (float)(Math.cos(in.age * 3.25) * Math.PI * 0.4);
+			return in.getYaw(tickDelta) + (float)(Math.cos(in.age * 3.25) * Math.PI);
 		}
 		return in.getYaw(tickDelta);
 	}
