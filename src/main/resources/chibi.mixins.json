@@ -6,6 +6,7 @@
   "mixins": [
   ],
   "client": [
+    "PlayerHurtOverride",
     "OverAllergy",
     "ShakeHand",
     "WaveAway",
