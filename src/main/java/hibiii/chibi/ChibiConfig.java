@@ -71,9 +71,6 @@ public class ChibiConfig implements ConfigData {
 	// OverAllergic
 	public boolean overworldAllergyNot = true;
 	
-	// Blackheart
-	public boolean blackheart = false;
-	
 	// grondag the barbarian? grondag the helpful renderer guy :)
 	// Code made after studying Canvas's menu code
 	public Screen getScreen (Screen previous) {
@@ -236,12 +233,6 @@ public class ChibiConfig implements ConfigData {
 					!overworldAllergyNot)
 				.setDefaultValue(false)
 				.setSaveConsumer(newValue -> overworldAllergyNot = !newValue)
-				.build())
-			.addEntry(entryBuilder.startBooleanToggle(
-					new TranslatableText("chibi.option.blackheart"),
-					blackheart)
-				.setDefaultValue(false)
-				.setSaveConsumer(newValue -> blackheart = newValue)
 				.build())
 			.addEntry(entryBuilder.startBooleanToggle(
 					new TranslatableText("chibi.option.overworld_particles"),
