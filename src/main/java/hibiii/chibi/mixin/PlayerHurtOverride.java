@@ -19,11 +19,10 @@ public class PlayerHurtOverride {
 	@Inject(
 		method = "onPlaySoundFromEntity(Lnet/minecraft/network/packet/s2c/play/PlaySoundFromEntityS2CPacket;)V",
 		at = @At(
-			value = "INVOKE",
-			target = "Lnet/minecraft/client/world/ClientWorld;getEntityById(I)Lnet/minecraft/entity/Entity;",
-			shift = At.Shift.AFTER),
+			value = "INVOKE_ASSIGN",
+			target = "Lnet/minecraft/client/world/ClientWorld;getEntityById(I)Lnet/minecraft/entity/Entity;"),
 		locals = LocalCapture.CAPTURE_FAILSOFT)
-	public Entity playerHurtSoundOverride(PlaySoundFromEntityS2CPacket packet, CallbackInfo ci, Entity entity3) {
+	public void playerHurtSoundOverride(PlaySoundFromEntityS2CPacket packet, CallbackInfo ci, Entity entity3) {
 		if(entity3 == Chibi.instance.player) {
 			SoundEvent soundEvent = packet.getSound();
 			if(soundEvent == SoundEvents.ENTITY_PLAYER_HURT
@@ -34,6 +33,6 @@ public class PlayerHurtOverride {
 			if(soundEvent == SoundEvents.ENTITY_PLAYER_DEATH)
 				Chibi.instance.world.playSoundFromEntity(Chibi.instance.player, entity3, SoundEvents.ENTITY_RABBIT_DEATH, packet.getCategory(), packet.getVolume(), packet.getPitch());
 		}
-		return entity3;
+		return;
 	}
 }
