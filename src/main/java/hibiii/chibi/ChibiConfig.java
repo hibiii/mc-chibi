@@ -66,53 +66,8 @@ public class ChibiConfig implements ConfigData {
 
 		// We are building the Particle subcategory first just so we don't have to store the cosmetic
 		// category in its own field. C-tier memory management!!!q
-		SubCategoryBuilder particleSubcategory = entryBuilder.startSubCategory(new TranslatableText("chibi.option.particles"))
-				.setExpanded(false);
-
-		// Particle Types
-		particleSubcategory.add(entryBuilder.startEnumSelector(
-				new TranslatableText("chibi.option.particle_type"),
-				ParticleType.class,
-				particleType)
-			.setDefaultValue(ParticleType.HEART)
-			.setEnumNameProvider(value -> new TranslatableText("chibi.option.particle." + value.toString()))
-			.setSaveConsumer(newValue -> particleType = newValue)
-			.build());
-		
-		// Particle Intensity
-		particleSubcategory.add(entryBuilder.startIntSlider(
-				new TranslatableText("chibi.option.particle_intensity"),
-				21 - particleInterval,
-				1, 20)
-			.setDefaultValue(10)
-			.setSaveConsumer(newValue -> particleInterval = 21 - newValue)
-			.build());
-
-		// Particle Velocity
-		particleSubcategory.add(entryBuilder.startDoubleField(
-				new TranslatableText("chibi.option.particle_velocity", Text.of("X")),
-				particleVelocityX)
-			.setDefaultValue(0.0)
-			.setMin(-10.0)
-			.setMax(10.0)
-			.setSaveConsumer(newValue -> particleVelocityX = newValue)
-			.build());
-		particleSubcategory.add(entryBuilder.startDoubleField(
-				new TranslatableText("chibi.option.particle_velocity", Text.of("Y")),
-				particleVelocityY)
-			.setDefaultValue(0.0)
-			.setMin(-10.0)
-			.setMax(10.0)
-			.setSaveConsumer(newValue -> particleVelocityY = newValue)
-			.build());
-		particleSubcategory.add(entryBuilder.startDoubleField(
-				new TranslatableText("chibi.option.particle_velocity", Text.of("Z")),
-				particleVelocityZ)
-			.setDefaultValue(0.0)
-			.setMin(-10.0)
-			.setMax(10.0)
-			.setSaveConsumer(newValue -> particleVelocityZ = newValue)
-			.build());
+		SubCategoryBuilder particleSubcategory = entryBuilder.startSubCategory(new TranslatableText("chibi.option.custom_particles"))
+				.setExpanded(particleType == ParticleType.CUSTOM);
 		
 		// Custom Particle Colour
 		particleSubcategory.add(0, entryBuilder.startColorField(
@@ -158,9 +113,39 @@ public class ChibiConfig implements ConfigData {
 						new TranslatableText("chibi.warn.generic.client_side").formatted(Formatting.GRAY))
 				.setSaveConsumer(newValue -> playerParticles = newValue)
 				.build())
+
+			// Particle Types
+			.addEntry(entryBuilder.startEnumSelector(
+					new TranslatableText("chibi.option.particle_type"),
+					ParticleType.class,
+					particleType)
+				.setDefaultValue(ParticleType.HEART)
+				.setEnumNameProvider(value -> new TranslatableText("chibi.option.particle." + value.toString()))
+				.setSaveConsumer(newValue -> particleType = newValue)
+				.build())
+			
+			// Particle Intensity
+			.addEntry(entryBuilder.startIntSlider(
+					new TranslatableText("chibi.option.particle_intensity"),
+					21 - particleInterval,
+					1, 20)
+				.setDefaultValue(10)
+				.setSaveConsumer(newValue -> particleInterval = 21 - newValue)
+				.build())
 			
 			// Particles subcategory
 			.addEntry(particleSubcategory.build())
+		// Wave Away
+		.addEntry(entryBuilder.startBooleanToggle(
+				new TranslatableText("chibi.option.wave_away"),
+				rightClickWave)
+			.setDefaultValue(false)
+			.setTooltip(
+				new TranslatableText("chibi.option.wave_away.tooltip"),
+				new TranslatableText("chibi.warn.generic.dont_cheat").formatted(Formatting.YELLOW).formatted(Formatting.UNDERLINE))
+			.setSaveConsumer(newValue -> rightClickWave = newValue)
+			.build());
+		
 		// Since I'm not using AutoConfig properly, this will do.
 		builder.setSavingRunnable(() -> {
 			try {
