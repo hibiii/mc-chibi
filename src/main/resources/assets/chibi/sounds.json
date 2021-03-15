@@ -1,0 +1,16 @@
+ {
+ 	"custom_hurt": {
+ 		"sounds": [
+ 			"chibi:custom_hurt1",
+ 			"chibi:custom_hurt2",
+			"chibi:custom_hurt3",
+			"chibi:custom_hurt4"
+ 		]
+ 	},
+ 	"custom_death": {
+ 		"sounds": [
+ 			"chibi:custom_death"
+ 		]
+ 	}
+}
+

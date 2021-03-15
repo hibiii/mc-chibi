@@ -3,6 +3,8 @@ package hibiii.chibi.mixin;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+import hibiii.chibi.Chibi;
+import hibiii.chibi.ChibiConfig.PlayerHurtSound;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.sound.SoundEvent;
@@ -13,12 +15,16 @@ public class ClientPlayerHurtOverride extends PlayerHurtOverride{
 	
 	@Override
 	public void hurtSoundOverride(DamageSource junk, CallbackInfoReturnable<SoundEvent> ci) {
-		ci.setReturnValue(SoundEvents.ENTITY_RABBIT_HURT);
+		if(Chibi.config.hurtSoundType == PlayerHurtSound.DEFAULT)
+			return;
+		ci.setReturnValue(Chibi.playerHurtSound);
 	}
 	
 
 	@Override
 	public void deathSoundOverride(CallbackInfoReturnable<SoundEvent> ci) {
-		ci.setReturnValue(SoundEvents.ENTITY_RABBIT_DEATH);
+		if(Chibi.config.hurtSoundType == PlayerHurtSound.DEFAULT)
+			return;
+		ci.setReturnValue(Chibi.playerDeathSound);
 	}
 }
