@@ -18,23 +18,6 @@ import me.sargunvohra.mcmods.autoconfig1u.serializer.ConfigSerializer.Serializat
 @Config(name = "chibi")
 public class ChibiConfig implements ConfigData {
 	
-	// PreventWeaponSwing
-	public enum PreventSwing {
-		OFF,
-		LENIENT,
-		STRICT
-	}
-	public PreventSwing preventSwing = PreventSwing.OFF;
-	
-	// SyncAttack
-	public enum SyncAttack {
-		OFF,
-		TICK_SCALING,
-		COOLDOWN_CORRECTION,
-		HYBRID
-	}
-	public SyncAttack syncAttack = SyncAttack.OFF;
-	
 	// ShowOwnName
 	public boolean hideOwnName = true;
 	
@@ -56,9 +39,6 @@ public class ChibiConfig implements ConfigData {
 	}
 	public ParticleType particleType = ParticleType.HEART;
 	public int particleInterval = 11;
-	public double particleVelocityX = 0.0;
-	public double particleVelocityY = 0.0;
-	public double particleVelocityZ = 0.0;
 	public class CustomParticle {
 		public float r = 0.5f;
 		public float g = 0.5f;
@@ -66,10 +46,7 @@ public class ChibiConfig implements ConfigData {
 		public float scale = 1.0f;		
 	}
 	public CustomParticle customParticle = new CustomParticle();
-	public boolean particlesOverworldOnly = false;
 	
-	// OverAllergic
-	public boolean overworldAllergyNot = true;
 	
 	// grondag the barbarian? grondag the helpful renderer guy :)
 	// Code made after studying Canvas's menu code
@@ -80,59 +57,10 @@ public class ChibiConfig implements ConfigData {
 				.setDefaultBackgroundTexture(new Identifier("chibi:menu_background.png"))
 				.setAlwaysShowTabs(false)
 				.setDoesConfirmSave(false);
-		builder.setGlobalized(true);           // Makes the config a single page and adds the sidebar
-		builder.setGlobalizedExpanded(false);
 		
 		final ConfigEntryBuilder entryBuilder = builder.entryBuilder();
 		
-		// --- Combat --
-		builder.getOrCreateCategory(new TranslatableText("chibi.menu.category.combat"))
-		
-			// Prevent Swing
-			.addEntry(entryBuilder.startEnumSelector(
-					new TranslatableText("chibi.option.prevent_swing"),
-					PreventSwing.class,
-					preventSwing)
-				.setDefaultValue(PreventSwing.OFF)
-				.setEnumNameProvider( value -> new TranslatableText("chibi.option.prevent_swing." + value.toString()))
-				.setTooltip(new TranslatableText("chibi.option.prevent_swing.tooltip"))
-				.setSaveConsumer(newValue -> preventSwing = newValue)
-				.build())
-			
-			// Sync Attack
-			.addEntry(entryBuilder.startEnumSelector(
-					new TranslatableText("chibi.option.sync_attack"),
-					SyncAttack.class,
-					syncAttack)
-				.setDefaultValue(SyncAttack.OFF)
-				.setEnumNameProvider(value -> new TranslatableText("chibi.option.sync_attack." + value.toString()))
-				.setTooltip(
-					new TranslatableText("chibi.option.sync_attack.tooltip"),
-					new TranslatableText("chibi.warn.experimental").formatted(Formatting.RED))
-				.setSaveConsumer(newValue -> syncAttack = newValue)
-				.build())
-			
-			// Wave Away
-			.addEntry(entryBuilder.startBooleanToggle(
-					new TranslatableText("chibi.option.wave_away"),
-					rightClickWave)
-				.setDefaultValue(false)
-				.setTooltip(
-					new TranslatableText("chibi.option.wave_away.tooltip"),
-					new TranslatableText("chibi.warn.generic.dont_cheat").formatted(Formatting.YELLOW).formatted(Formatting.UNDERLINE))
-				.setSaveConsumer(newValue -> rightClickWave = newValue)
-				.build())
-			
-			// Warning
-			.addEntry(entryBuilder.startTextDescription(
-					new TranslatableText ("chibi.option.combat.warning"))
-				.setTooltip(
-					new TranslatableText("chibi.warn.combat.line1"),
-					new TranslatableText("chibi.warn.combat.line2"),
-					new TranslatableText("chibi.warn.combat.line3"),
-					new TranslatableText("chibi.warn.combat.line4"),
-					new TranslatableText("chibi.warn.generic.dont_cheat").formatted(Formatting.YELLOW).formatted(Formatting.UNDERLINE))
-				.build());
+
 		
 		// --- Cosmetic --
 
@@ -233,16 +161,6 @@ public class ChibiConfig implements ConfigData {
 			
 			// Particles subcategory
 			.addEntry(particleSubcategory.build())
-			.addEntry(entryBuilder.startBooleanToggle(
-					new TranslatableText("chibi.option.overworld_allergy"),
-					!overworldAllergyNot)
-				.setDefaultValue(false)
-				.setTooltip(
-						new TranslatableText("chibi.option.overworld_allergy.tooltip"),
-						new TranslatableText("chibi.warn.generic.client_side").formatted(Formatting.GRAY))
-				.setSaveConsumer(newValue -> overworldAllergyNot = !newValue)
-				.build());
-			
 		// Since I'm not using AutoConfig properly, this will do.
 		builder.setSavingRunnable(() -> {
 			try {

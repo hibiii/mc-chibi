@@ -8,15 +8,10 @@
   "client": [
     "ClientPlayerHurtOverride",
     "PlayerHurtOverride",
-    "OverAllergy",
-    "ShakeHand",
     "WaveAway",
     "WalkAway",
     "PlayerParticles",
-    "ShowOwnName",
-    "PreventWeaponSwing",
-    "SyncAttack",
-    "TpsReader"
+    "ShowOwnName"
   ],
   "injectors": {
     "defaultRequire": 1

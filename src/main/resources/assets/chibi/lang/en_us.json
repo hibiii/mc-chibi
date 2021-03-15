@@ -1,19 +1,5 @@
 {
 	"chibi.menu.title": "Chibi Settings",
-	"chibi.menu.category.combat": "Combat",
-	
-	"chibi.option.prevent_swing": "Prevent Weapon Swing",
-		"chibi.option.prevent_swing.OFF": "OFF",
-		"chibi.option.prevent_swing.LENIENT": "Lenient",
-		"chibi.option.prevent_swing.STRICT": "Strictly",
-	"chibi.option.prevent_swing.tooltip": "Prevents attacking during cooldown.",
-	
-	"chibi.option.sync_attack": "Sync Attack Cooldown",
-		"chibi.option.sync_attack.OFF": "OFF",
-		"chibi.option.sync_attack.TICK_SCALING": "Tick Scaling",
-		"chibi.option.sync_attack.COOLDOWN_CORRECTION": "Cooldown Correction",
-		"chibi.option.sync_attack.HYBRID": "Hybrid",
-	"chibi.option.sync_attack.tooltip": "During server lag, the cooldown also lags.",
 	
 	"chibi.option.wave_away": "Use to Wave Off-Hand",
 	"chibi.option.wave_away.tooltip": "Swinging your hand for no reason may trigger anti-cheats.",
@@ -41,7 +27,6 @@
 			"chibi.option.particle.WHITE_SPARKLES": "White Sparkles",
 			"chibi.option.particle.CUSTOM": "Custom...",
 		"chibi.option.particle_intensity": "Particle Intensity",
-		"chibi.option.particle_velocity": "%s Velocity",
 			"chibi.option.custom_particle.color": "Color",
 			"chibi.option.custom_particle.scale": "Scale",
 		"chibi.option.overworld_particles": "Particles in Overworld only",

@@ -60,9 +60,7 @@ public class PlayerParticles {
 				player.getX() + this.random.nextGaussian() * 0.3,
 				player.getY() + this.random.nextDouble() * player.getBoundingBox().getYLength(),
 				player.getZ() + this.random.nextGaussian() * 0.3,
-				Chibi.config.particleVelocityX,
-				Chibi.config.particleVelocityY,
-				Chibi.config.particleVelocityZ);
+				0, 0, 0);
 		}
 	}
 }

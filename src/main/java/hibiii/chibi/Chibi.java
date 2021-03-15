@@ -17,13 +17,6 @@ import me.sargunvohra.mcmods.autoconfig1u.serializer.Toml4jConfigSerializer;
 // Used mostly as data storage
 public class Chibi implements ClientModInitializer {
 	
-	// TpsReader
-	public static double tpsRate = 0.0d;
-	public static double tpsMspt = 0.0d;
-	
-	// SyncAttack
-	public static long syncAttackElapsedTicks = 0l;
-	
 	// WalkAway
 	public static boolean walkModifier = false;
 	private static KeyBinding walkKeyBind;
