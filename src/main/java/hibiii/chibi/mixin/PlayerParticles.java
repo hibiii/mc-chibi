@@ -27,7 +27,6 @@ public class PlayerParticles {
 	@Shadow
 	private boolean paused;
 	
-	protected final Random random = new Random();
 	private ParticleEffect selectedParticle;
 	
 	private short tickCount = 0;
@@ -35,8 +34,6 @@ public class PlayerParticles {
 	@Inject(method = "tick", at = @At("HEAD"))
 	private void addParticles(CallbackInfo info) {
 		if (!Chibi.config.playerParticles || world == null || paused || player == null || player.isInvisible())
-			return;
-		if(Chibi.config.particlesOverworldOnly && !world.getDimension().isBedWorking())
 			return;
 		tickCount++;
 		if (tickCount % Chibi.config.particleInterval == 0) {
@@ -57,9 +54,9 @@ public class PlayerParticles {
 					Chibi.config.customParticle.scale); break;
 			}
 			world.addParticle(selectedParticle,
-				player.getX() + this.random.nextGaussian() * 0.3,
-				player.getY() + this.random.nextDouble() * player.getBoundingBox().getYLength(),
-				player.getZ() + this.random.nextGaussian() * 0.3,
+				player.getX() + world.random.nextGaussian() * 0.3,
+				player.getY() + world.random.nextDouble() * player.getBoundingBox().getYLength(),
+				player.getZ() + world.random.nextGaussian() * 0.3,
 				0, 0, 0);
 		}
 	}
