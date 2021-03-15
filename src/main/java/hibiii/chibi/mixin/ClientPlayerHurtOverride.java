@@ -1,29 +1,24 @@
 package hibiii.chibi.mixin;
 
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.sound.SoundEvent;
+import net.minecraft.sound.SoundEvents;
 
-@Mixin(PlayerEntity.class)
-public abstract class PlayerHurtOverride {
+@Mixin(ClientPlayerEntity.class)
+public class ClientPlayerHurtOverride extends PlayerHurtOverride{
 	
-	@Inject(
-		method = "getHurtSound",
-		at = @At("HEAD"),
-		cancellable = true)
+	@Override
 	public void hurtSoundOverride(DamageSource junk, CallbackInfoReturnable<SoundEvent> ci) {
+		ci.setReturnValue(SoundEvents.ENTITY_RABBIT_HURT);
 	}
 	
 
-	@Inject(
-		method = "getDeathSound",
-		at = @At("HEAD"),
-		cancellable = true)
+	@Override
 	public void deathSoundOverride(CallbackInfoReturnable<SoundEvent> ci) {
+		ci.setReturnValue(SoundEvents.ENTITY_RABBIT_DEATH);
 	}
 }

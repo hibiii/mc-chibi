@@ -12,7 +12,7 @@ Feel free to mess around with it though.
 "Thanks" can't simply describe my grattitude for these people, so a turbo thanks it is:
 
 - supersaiyansubtlety and Reece for helping me fix missing references early on
-- LlamaLad7 for helping me fix Mixin shenanigans on PlayerHurtOverride
+- LlamaLad7 for helping me fix Mixin shenanigans on PlayerHurtOverride, twice
 
 ## License
 
