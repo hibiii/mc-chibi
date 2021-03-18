@@ -3,9 +3,13 @@ package hibiii.chibi;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
+import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.options.KeyBinding;
 import net.minecraft.client.util.InputUtil;
+import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
@@ -32,6 +36,8 @@ public class Chibi implements ClientModInitializer {
 	public static SoundEvent playerHurtSound;
 	public static SoundEvent playerDeathSound;
 	
+	// RenderHat
+	public static boolean renderHat = false;
 	
 	// Config
 	public static ChibiConfig config;
@@ -47,6 +53,9 @@ public class Chibi implements ClientModInitializer {
 	public static final Identifier CUSTOM_DEATH_SOUND_ID = new Identifier("chibi", "custom_death");
 	public static final SoundEvent CUSTOM_DEATH_SOUND = new SoundEvent(CUSTOM_DEATH_SOUND_ID);
 
+	public static final Item TEST_HAT = new Item(new FabricItemSettings().maxCount(1).equipmentSlot((stack) -> {return EquipmentSlot.HEAD;}));
+	public static ItemStack testHat;
+	
 	@Override
 	public void onInitializeClient() {
 		try {
@@ -88,5 +97,7 @@ public class Chibi implements ClientModInitializer {
 		});
 		
 		instance = MinecraftClient.getInstance();
+		Registry.register(Registry.ITEM, new Identifier("chibi","test_hat"), TEST_HAT);
+		testHat = new ItemStack(TEST_HAT);
 	}
 }

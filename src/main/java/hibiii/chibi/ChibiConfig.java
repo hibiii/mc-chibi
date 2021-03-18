@@ -55,6 +55,9 @@ public class ChibiConfig implements ConfigData {
 	}
 	public PlayerHurtSound hurtSoundType = PlayerHurtSound.DEFAULT;
 	
+	// Hat
+	public boolean hat;
+	
 	// grondag the barbarian? grondag the helpful renderer guy :)
 	// Code made after studying Canvas's menu code
 	public Screen getScreen (Screen previous) {
@@ -162,6 +165,13 @@ public class ChibiConfig implements ConfigData {
 				new TranslatableText("chibi.option.hurt_sound_override.tooltip"),
 			new TranslatableText("chibi.warn.generic.client_side").formatted(Formatting.GRAY))
 			.setSaveConsumer(in -> setPlayerHurtOverride(in))
+			.build())
+		
+		.addEntry(entryBuilder.startBooleanToggle(
+				Text.of("Hat"),
+				hat)
+			.setDefaultValue(false)
+			.setSaveConsumer(in -> hat = in)
 			.build());
 		
 		// Since I'm not using AutoConfig properly, this will do.

@@ -1,0 +1,83 @@
+{
+	"credit": "Hibi",
+	"texture_size": [32, 32],
+	"textures": {
+		"layer0": "chibi:bristol_hat",
+		"particle": "minecraft:item/leather"
+	},
+	"elements": [
+		{
+			"name": "Hat1",
+			"from": [-1, 14, -1],
+			"to": [17, 16, 17],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 23, 8]},
+			"faces": {
+				"north": {"uv": [0, 0, 8, 1], "texture": "#layer0"},
+				"east": {"uv": [0, 3, 8, 4], "texture": "#layer0"},
+				"south": {"uv": [0, 1, 8, 2], "texture": "#layer0"},
+				"west": {"uv": [0, 2, 8, 3], "texture": "#layer0"},
+				"up": {"uv": [8, 0, 16, 8], "texture": "#layer0"},
+				"down": {"uv": [8, 0, 16, 8], "texture": "#layer0"}
+			}
+		},
+		{
+			"name": "Hat2",
+			"from": [2, 16, 2],
+			"to": [14, 21, 14],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 10, 8]},
+			"faces": {
+				"north": {"uv": [0, 4, 6, 6.5], "texture": "#layer0"},
+				"east": {"uv": [0, 11.5, 6, 14], "texture": "#layer0"},
+				"south": {"uv": [0, 6.5, 6, 9], "texture": "#layer0"},
+				"west": {"uv": [0, 9, 6, 11.5], "texture": "#layer0"},
+				"up": {"uv": [10, 8, 16, 14], "texture": "#layer0"},
+				"down": {"uv": [8, 0, 16, 8], "texture": "#layer0"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [-24, 0, -90],
+			"translation": [-3, -1.25, -2.75],
+			"scale": [0.375, 0.375, 0.375]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [-24, 0, -90],
+			"translation": [-3, -1.25, -2.5],
+			"scale": [0.375, 0.375, 0.375]
+		},
+		"firstperson_righthand": {
+			"rotation": [-5, -13, -1],
+			"scale": [0.4, 0.4, 0.4]
+		},
+		"firstperson_lefthand": {
+			"rotation": [-5, -12, -1],
+			"scale": [0.4, 0.4, 0.4]
+		},
+		"ground": {
+			"translation": [0, 2.75, 0],
+			"scale": [0.8, 0.8, 0.8]
+		},
+		"gui": {
+			"rotation": [30, 225, 0],
+			"translation": [0, -4.25, 0],
+			"scale": [0.6, 0.6, 0.6]
+		},
+		"head": {
+			"rotation": [23, 0, 0],
+			"translation": [0, -2.75, -2.25],
+			"scale": [1.3, 1, 1.3]
+		},
+		"fixed": {
+			"rotation": [-45.5, 0, 0],
+			"translation": [0, 0, -3.25]
+		}
+	},
+	"groups": [0,
+		{
+			"name": "Hat",
+			"origin": [8, 22, 8],
+			"children": [0, 1]
+		}
+	]
+}
