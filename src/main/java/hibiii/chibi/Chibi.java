@@ -32,11 +32,6 @@ public class Chibi implements ClientModInitializer {
 	public static SoundEvent playerHurtSound;
 	public static SoundEvent playerDeathSound;
 	
-	public static final Identifier CUSTOM_HURT_SOUND_ID = new Identifier("chibi", "custom_hurt");
-	public static final SoundEvent CUSTOM_HURT_SOUND = new SoundEvent(CUSTOM_HURT_SOUND_ID);	
-	public static final Identifier CUSTOM_DEATH_SOUND_ID = new Identifier("chibi", "custom_death");
-	public static final SoundEvent CUSTOM_DEATH_SOUND = new SoundEvent(CUSTOM_DEATH_SOUND_ID);
-	
 	
 	// Config
 	public static ChibiConfig config;
@@ -46,10 +41,14 @@ public class Chibi implements ClientModInitializer {
 	
 	public static MinecraftClient instance;
 	
+
+	public static final Identifier CUSTOM_HURT_SOUND_ID = new Identifier("chibi", "custom_hurt");
+	public static final SoundEvent CUSTOM_HURT_SOUND = new SoundEvent(CUSTOM_HURT_SOUND_ID);	
+	public static final Identifier CUSTOM_DEATH_SOUND_ID = new Identifier("chibi", "custom_death");
+	public static final SoundEvent CUSTOM_DEATH_SOUND = new SoundEvent(CUSTOM_DEATH_SOUND_ID);
+
 	@Override
 	public void onInitializeClient() {
-		Registry.register(Registry.SOUND_EVENT, CUSTOM_HURT_SOUND_ID, CUSTOM_HURT_SOUND);
-		Registry.register(Registry.SOUND_EVENT, CUSTOM_DEATH_SOUND_ID, CUSTOM_DEATH_SOUND);
 		try {
 			config = configSerializer.deserialize();
 		} catch (SerializationException e) {
