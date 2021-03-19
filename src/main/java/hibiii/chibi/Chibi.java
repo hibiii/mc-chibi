@@ -1,6 +1,7 @@
 package hibiii.chibi;
 
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.client.command.v1.ClientCommandManager;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
@@ -10,13 +11,17 @@ import net.minecraft.client.util.InputUtil;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.MessageType;
 import net.minecraft.sound.SoundEvent;
+import net.minecraft.text.TranslatableText;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 import org.lwjgl.glfw.GLFW;
 
+import hibiii.chibi.ChibiConfig.PlayerHurtSound;
 import me.sargunvohra.mcmods.autoconfig1u.annotation.Config;
 import me.sargunvohra.mcmods.autoconfig1u.serializer.ConfigSerializer.SerializationException;
 import me.sargunvohra.mcmods.autoconfig1u.serializer.Toml4jConfigSerializer;
@@ -41,6 +46,9 @@ public class Chibi implements ClientModInitializer {
 	
 	// Config
 	public static ChibiConfig config;
+	
+	// Very bodgy way to set previous hurt sound type
+	private static PlayerHurtSound previousHurtSound = PlayerHurtSound.DEFAULT;
 	
 	public static Toml4jConfigSerializer<ChibiConfig> configSerializer =
 			new Toml4jConfigSerializer<ChibiConfig>(ChibiConfig.class.getAnnotation(Config.class), ChibiConfig.class);
@@ -95,6 +103,50 @@ public class Chibi implements ClientModInitializer {
 			if(bindWaveOffHand.wasPressed())
 				instance.player.swingHand(Hand.OFF_HAND);
 		});
+		
+		ClientCommandManager.DISPATCHER.register(ClientCommandManager.literal("chibi")
+			.then(ClientCommandManager.literal("hat")
+				.executes(ctx -> {
+					config.hat = !config.hat;
+					instance.inGameHud.getChatHud().addMessage(
+						new TranslatableText("chibi.command.hat")
+							.formatted(Formatting.GRAY));
+					return 1; }))
+			.then(ClientCommandManager.literal("particles")
+				.executes(ctx -> {
+					config.playerParticles = !config.playerParticles;
+					instance.inGameHud.getChatHud().addMessage(
+							new TranslatableText("chibi.command.particles")
+								.formatted(Formatting.GRAY));
+					return 1; }))
+			.then(ClientCommandManager.literal("username")
+				.executes(ctx -> {
+					config.hideOwnName = ! config.hideOwnName;
+					instance.inGameHud.getChatHud().addMessage(
+							new TranslatableText("chibi.command.username")
+								.formatted(Formatting.GRAY));
+					return 1; }))
+			.then(ClientCommandManager.literal("hurtSounds")
+				.executes(ctx -> {
+					if(config.hurtSoundType != PlayerHurtSound.DEFAULT) {
+						previousHurtSound = config.hurtSoundType;
+						config.hurtSoundType = PlayerHurtSound.DEFAULT;
+						instance.inGameHud.getChatHud().addMessage(
+								new TranslatableText("chibi.command.hurt_sounds.off")
+									.formatted(Formatting.GRAY));
+						return 1;
+					}
+					if(previousHurtSound == PlayerHurtSound.DEFAULT) {
+						instance.inGameHud.getChatHud().addMessage(
+								new TranslatableText("chibi.command.hurt_sounds.error")
+									.formatted(Formatting.RED));
+						return 1;
+					}
+					config.hurtSoundType = previousHurtSound;
+					instance.inGameHud.getChatHud().addMessage(
+							new TranslatableText("chibi.command.hurt_sounds.on")
+								.formatted(Formatting.GRAY));
+					return 1; })));
 		
 		instance = MinecraftClient.getInstance();
 		Registry.register(Registry.ITEM, new Identifier("chibi","test_hat"), TEST_HAT);

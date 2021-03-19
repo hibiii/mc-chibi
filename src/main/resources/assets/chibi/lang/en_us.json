@@ -56,5 +56,12 @@
 	
 	"chibi.key.walk_modifier": "Walk Slowly",
 	"chibi.key.wave_main_hand": "Wave with Main Hand",
-	"chibi.key.wave_off_hand": "Wave with Off Hand"
+	"chibi.key.wave_off_hand": "Wave with Off Hand",
+	
+	"chibi.command.hat": "Toggled cosmetic hat",
+	"chibi.command.particles": "Toggled player particles",
+	"chibi.command.username": "Toggled your own username in third-person cameras",
+	"chibi.command.hurt_sounds.off": "Disabled custom player hurt sounds",
+	"chibi.command.hurt_sounds.on": "Enabled custom player hurt sounds",
+	"chibi.command.hurt_sounds.error": "You need to select a sound group first"
 }
