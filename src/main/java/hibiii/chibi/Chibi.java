@@ -11,7 +11,6 @@ import net.minecraft.client.util.InputUtil;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.network.MessageType;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Formatting;

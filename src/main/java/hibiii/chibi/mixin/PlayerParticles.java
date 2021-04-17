@@ -1,7 +1,6 @@
 package hibiii.chibi.mixin;
 import hibiii.chibi.Chibi;
 
-import java.util.Random;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.world.ClientWorld;

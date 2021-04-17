@@ -58,6 +58,8 @@ public class ChibiConfig implements ConfigData {
 	// Hat
 	public boolean hat;
 	
+	public boolean punchToUse;
+	
 	// grondag the barbarian? grondag the helpful renderer guy :)
 	// Code made after studying Canvas's menu code
 	public Screen getScreen (Screen previous) {
@@ -172,6 +174,13 @@ public class ChibiConfig implements ConfigData {
 				hat)
 			.setDefaultValue(false)
 			.setSaveConsumer(in -> hat = in)
+			.build())
+
+		.addEntry(entryBuilder.startBooleanToggle(
+				Text.of("Troglodyte"),
+				punchToUse)
+			.setDefaultValue(false)
+			.setSaveConsumer(in -> punchToUse = in)
 			.build());
 		
 		// Since I'm not using AutoConfig properly, this will do.
