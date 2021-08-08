@@ -18,8 +18,8 @@
 
   "environment": "client",
   "entrypoints": {
-    "client": [ "hibiii.chibi.Chibi" ],
-    "modmenu": [ "hibiii.chibi.ChibiModmenu" ]
+    "client": [ "hibi.chibi.Chibi" ],
+    "modmenu": [ "hibi.chibi.ChibiModmenu" ]
   },
   "mixins": [
     "chibi.mixins.json"
