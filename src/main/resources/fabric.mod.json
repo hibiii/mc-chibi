@@ -3,8 +3,8 @@
   "id": "chibi",
   "version": "${version}",
 
-  "name": "Chibi Mod",
-  "description": "Hibi's Experiments Mod",
+  "name": "Chibi",
+  "description": "Hibi's Custom Mod",
   "authors": [
     "Hibiii"
   ],
@@ -16,7 +16,7 @@
   "license": "Unlicense",
   "icon": "assets/chibi/icon.png",
 
-  "environment": "*",
+  "environment": "client",
   "entrypoints": {
     "client": [ "hibiii.chibi.Chibi" ],
     "modmenu": [ "hibiii.chibi.ChibiModmenu" ]
@@ -30,13 +30,5 @@
     "fabric": ">=0.31.0",
     "minecraft": ">=1.17",
     "java": ">=16"
-  },
-  "custom": {
-    "modmenu:clientsideOnly": true,
-    "modupdater": {
-      "strategy": "github",
-      "owner":"Hibiii",
-      "repository":"Chibi"
-    }
   }
 }
