@@ -6,7 +6,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import hibi.chibi.Chibi;
+import hibi.chibi.Config;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.util.Hand;
@@ -23,7 +23,7 @@ public class WaveAway {
 	
 	@Inject(at = @At("TAIL"), method = "doItemUse()V")
 	private void rightClickAirToSwing(CallbackInfo info) {
-		if (Chibi.config.rightClickWave && this.crosshairTarget.getType() == HitResult.Type.MISS && this.player.getStackInHand(Hand.OFF_HAND).isEmpty()) {
+		if (Config.waving && this.crosshairTarget.getType() == HitResult.Type.MISS && this.player.getStackInHand(Hand.OFF_HAND).isEmpty()) {
 			this.player.swingHand(Hand.OFF_HAND);
 			return;
 		}
