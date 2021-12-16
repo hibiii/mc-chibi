@@ -1,5 +1,5 @@
-package hibiii.chibi.mixin;
-import hibiii.chibi.Chibi;
+package hibi.chibi.mixin;
+import hibi.chibi.Chibi;
 
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;

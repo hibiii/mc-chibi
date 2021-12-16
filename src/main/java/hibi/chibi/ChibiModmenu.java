@@ -1,7 +1,7 @@
-package hibiii.chibi;
+package hibi.chibi;
 
-import io.github.prospector.modmenu.api.ModMenuApi;
-import io.github.prospector.modmenu.api.ConfigScreenFactory;
+import com.terraformersmc.modmenu.api.ModMenuApi;
+import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 
 public class ChibiModmenu implements ModMenuApi {
 	

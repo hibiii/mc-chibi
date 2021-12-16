@@ -1,4 +1,4 @@
-package hibiii.chibi.mixin;
+package hibi.chibi.mixin;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -7,7 +7,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
-import hibiii.chibi.Chibi;
+import hibi.chibi.Chibi;
 import net.minecraft.block.BedBlock;
 import net.minecraft.block.BellBlock;
 import net.minecraft.block.Block;

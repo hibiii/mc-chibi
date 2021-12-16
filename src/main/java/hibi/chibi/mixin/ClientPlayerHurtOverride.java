@@ -1,10 +1,10 @@
-package hibiii.chibi.mixin;
+package hibi.chibi.mixin;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import hibiii.chibi.Chibi;
-import hibiii.chibi.ChibiConfig.PlayerHurtSound;
+import hibi.chibi.Chibi;
+import hibi.chibi.ChibiConfig.PlayerHurtSound;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.sound.SoundEvent;

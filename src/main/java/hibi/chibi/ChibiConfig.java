@@ -1,4 +1,4 @@
-package hibiii.chibi;
+package hibi.chibi;
 
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.sound.SoundEvents;
