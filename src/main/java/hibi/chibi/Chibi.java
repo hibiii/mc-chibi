@@ -3,15 +3,12 @@ package hibi.chibi;
 import org.lwjgl.glfw.GLFW;
 
 import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.fabric.api.client.command.v1.ClientCommandManager;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.sound.SoundEvent;
-import net.minecraft.text.TranslatableText;
-import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
 
 // Used mostly as data storage
@@ -36,7 +33,9 @@ public class Chibi implements ClientModInitializer {
 	
 	@Override
 	public void onInitializeClient() {
-		
+		instance = MinecraftClient.getInstance();
+		Config.load();
+
 		// Register the walk modifier key
 		walkKeyBind = KeyBindingHelper.registerKeyBinding(new KeyBinding(
 			"chibi.key.walk_modifier",
@@ -67,21 +66,5 @@ public class Chibi implements ClientModInitializer {
 			if(bindWaveOffHand.wasPressed() && Config.waving)
 				instance.player.swingHand(Hand.OFF_HAND);
 		});
-		
-		ClientCommandManager.DISPATCHER.register(ClientCommandManager.literal("chibi")
-			.then(ClientCommandManager.literal("ignDisplay")
-				.executes(ctx -> {
-					Config.ignDisplay = ! Config.ignDisplay;
-					instance.inGameHud.getChatHud().addMessage(
-							new TranslatableText("chibi.command.username")
-								.formatted(Formatting.GRAY, Formatting.ITALIC));
-					return 1; }))
-			.then(ClientCommandManager.literal("punchToUse")
-				.executes(ctx -> {
-					Config.punchToUse = ! Config.punchToUse;
-					instance.inGameHud.getChatHud().addMessage(
-							new TranslatableText("chibi.command.username")
-								.formatted(Formatting.GRAY));
-					return 1; })));
 	}
 }

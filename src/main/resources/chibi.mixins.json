@@ -6,13 +6,8 @@
   "mixins": [
   ],
   "client": [
-    "PunchToUse",
-    "RenderHat",
-    "ClientPlayerHurtOverride",
-    "PlayerHurtOverride",
     "WaveAway",
     "WalkAway",
-    "PlayerParticles",
     "ShowOwnName"
   ],
   "injectors": {

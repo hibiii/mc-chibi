@@ -4,9 +4,9 @@
   "version": "${version}",
 
   "name": "Chibi",
-  "description": "Hibi's Custom Mod",
+  "description": "This mod is a test bed for features, experiments, or other stuff that may not be 100%% in the green. If you play on a multiplayer server, please check with moderators which features are allowed by the server rules.",
   "authors": [
-    "Hibiii"
+    "Hibi"
   ],
   "contact": {
     "sources": "https://github.com/Hibiii/Chibi",
@@ -19,15 +19,24 @@
   "environment": "client",
   "entrypoints": {
     "client": [ "hibi.chibi.Chibi" ],
-    "modmenu": [ "hibi.chibi.ChibiModmenu" ]
+    "modmenu": [ "hibi.chibi.MenuInteg" ]
   },
   "mixins": [
     "chibi.mixins.json"
   ],
 
   "depends": {
-    "fabricloader": ">=0.12.",
-    "fabric": ">=0.42.1",
-    "minecraft": ">=1.18.1"
+    "fabricloader": ">=0.12.12",
+    "fabric": ">=0.44.0",
+    "minecraft": ">=1.18.1",
+    "cloth-config": ">=6.0"
+  },
+  "custom": {
+    "modmenu": {
+      "links": {
+        "modmenu.github_releases": "https://github.com/Hibiii/Chibi/releases/",
+        "modmenu.discord": "https://discord.gg/Zef3c27dN2"
+      }
+    }
   }
 }
