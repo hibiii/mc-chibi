@@ -10,6 +10,11 @@
 	"chibi.config.waving.tooltip": "Swinging your hand for no reason may trigger anti-cheats.",
 	"chibi.config.waving.keys": "Keybinds are set in the vanilla options.",
 
+	"chibi.config.straferunning": "Strafe Running",
+	"chibi.config.straferunning.tooltip": "Running diagonally is approx. 1.4 times faster.",
+
+	"chibi.config.tooltip.dont_cheat": "This option may be considered cheating.",
+
 	"chibi.key.walk_modifier": "Walk Slowly",
 	"chibi.key.wave_main_hand": "Wave with Main Hand",
 	"chibi.key.wave_off_hand": "Wave with Off Hand",

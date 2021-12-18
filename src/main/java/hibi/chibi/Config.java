@@ -11,6 +11,7 @@ public class Config {
 	
 	public static boolean ignDisplay = false;
 	public static boolean waving = false;
+	public static boolean straferunning = false;
 
 	private static File file = new File(FabricLoader.getInstance().getConfigDir().toFile(), "chibi.properties");
 
@@ -26,6 +27,8 @@ public class Config {
 						ignDisplay = Boolean.parseBoolean(line.substring(11));
 					if(line.startsWith("waving "))
 						waving = Boolean.parseBoolean(line.substring(7));
+					if(line.startsWith("straferunning "))
+						straferunning = Boolean.parseBoolean(line.substring(14));
 					line = br.readLine();
 				} while (line != null);
 				br.close();
@@ -40,6 +43,7 @@ public class Config {
 			FileWriter writer = new FileWriter(file);
 			writer.write("ignDisplay " + Boolean.toString(ignDisplay) + "\n");
 			writer.write("waving " + Boolean.toString(waving) + "\n");
+			writer.write("straferunning " + Boolean.toString(straferunning) + "\n");
 			writer.close();
 		}
 		catch (Exception e) {

@@ -6,6 +6,7 @@ import com.terraformersmc.modmenu.api.ModMenuApi;
 import me.shedaniel.clothconfig2.api.ConfigBuilder;
 import me.shedaniel.clothconfig2.api.ConfigEntryBuilder;
 import net.minecraft.text.TranslatableText;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 
 public class MenuInteg implements ModMenuApi {
@@ -28,6 +29,11 @@ public class MenuInteg implements ModMenuApi {
 					.setTooltip(new TranslatableText("chibi.config.waving.tooltip"))
 					.build())
 				.addEntry(entryBuilder.startTextDescription(new TranslatableText("chibi.config.waving.keys"))
+					.build())
+				.addEntry(entryBuilder.startBooleanToggle(new TranslatableText("chibi.config.straferunning"), Config.straferunning)
+					.setDefaultValue(false)
+					.setSaveConsumer(val -> Config.straferunning = val)
+					.setTooltip(new TranslatableText("chibi.config.straferunning.tooltip"), new TranslatableText("chibi.config.tooltip.dont_cheat").formatted(Formatting.RED))
 					.build())
 				.setBackground(new Identifier("chibi", "menu_background.png"));
 				builder.setSavingRunnable(() -> Config.save());

@@ -49,8 +49,14 @@ Feel free to mess around with it though.
 - Result: Success!
 - Present: Yes.
 
+### Straferunning
+- Reasoning: th e speed is al ot mate
+- Implementation: Prevent 3D vector normalization if called by `Entity movementInputToVelocity`.
+- Result: (none)
+- Present: Yes.
+
 ### SyncAttack
-- Reasoning: Clientside TPS is almost aways 20 TPS but server TPS can easily dip below 18, and attack cooldowns are calculated tickwise, not by realtime.
+- Reasoning: Clientside TPS is almost always 20 TPS but server TPS can easily dip below 18, and attack cooldowns are calculated tickwise, not by realtime.
 - Implementaion: Cooldown correction rolls back the cooldown every tick by the difference between the client and the server. Tick scaling adds to the cooldown only when the server has done at least 1 tick. Hybrid uses both methods. Injection at head into `PlayerEntity tick`. The TPS estimation is done by injecting at head into `ClientPlayNetworkHandler onWorldTimeUpdate`.
 - Result: Mixed.
 - Present: No.
