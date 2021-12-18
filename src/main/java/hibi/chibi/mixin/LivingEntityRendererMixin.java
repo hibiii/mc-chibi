@@ -15,13 +15,17 @@ import net.minecraft.client.render.entity.model.EntityModel;
 import net.minecraft.entity.LivingEntity;
 
 @Mixin(LivingEntityRenderer.class)
-public abstract class ShowOwnName<T extends LivingEntity, M extends EntityModel<T>> extends EntityRenderer<T> implements FeatureRendererContext<T, M> {
+public abstract class LivingEntityRendererMixin<T extends LivingEntity, M extends EntityModel<T>> extends EntityRenderer<T> implements FeatureRendererContext<T, M> {
 
-	protected ShowOwnName(Context dispatcher) {
+	protected LivingEntityRendererMixin(Context dispatcher) {
 		super(dispatcher);
 	}
 
-	@Inject(method = "hasLabel", at = @At("HEAD"), cancellable = true)
+	// ShowOwnName
+	@Inject(
+		method = "hasLabel",
+		at = @At("HEAD"),
+		cancellable = true)
 	public void showOwnName(T livingEntity, CallbackInfoReturnable<Boolean> cir) {
 		MinecraftClient client = MinecraftClient.getInstance();
 		if (Config.ignDisplay && livingEntity == client.cameraEntity && MinecraftClient.isHudEnabled() && !livingEntity.isInvisible())

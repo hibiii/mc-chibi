@@ -12,14 +12,14 @@ import net.minecraft.util.math.Vec3d;
 
 @Environment(EnvType.CLIENT)
 @Mixin(Entity.class)
-public class Straferunning {
+public class EntityMixin {
+
+	// Straferunning
 	@Redirect(
+		method = "movementInputToVelocity(Lnet/minecraft/util/math/Vec3d;FF)Lnet/minecraft/util/math/Vec3d;",
 		at = @At(
 			value = "INVOKE",
-			target = "Lnet/minecraft/util/math/Vec3d;normalize()Lnet/minecraft/util/math/Vec3d;"
-		),
-		method = "movementInputToVelocity(Lnet/minecraft/util/math/Vec3d;FF)Lnet/minecraft/util/math/Vec3d;"
-	)
+			target = "Lnet/minecraft/util/math/Vec3d;normalize()Lnet/minecraft/util/math/Vec3d;"))
 	private static Vec3d noNormalize(Vec3d that) {
 		if(Config.straferunning)
 			return that;

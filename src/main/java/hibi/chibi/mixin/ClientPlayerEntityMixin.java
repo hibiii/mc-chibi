@@ -9,9 +9,13 @@ import hibi.chibi.Chibi;
 import net.minecraft.client.network.ClientPlayerEntity;
 
 @Mixin(ClientPlayerEntity.class)
-public class WalkAway {
+public class ClientPlayerEntityMixin {
 
-	@Inject(method = "shouldSlowDown()Z", at = @At(value = "INVOKE"), cancellable = true)
+	// WalkAway
+	@Inject(
+		method = "shouldSlowDown()Z",
+		at = @At(value = "INVOKE"),
+		cancellable = true)
 	public void walkModifier (CallbackInfoReturnable<Boolean> ci) {
 		if(Chibi.walkModifier)
 			ci.setReturnValue(true);
