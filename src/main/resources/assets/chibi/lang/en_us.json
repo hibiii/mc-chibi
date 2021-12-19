@@ -10,6 +10,9 @@
 	"chibi.config.waving.tooltip": "Swinging your hand for no reason may trigger anti-cheats.",
 	"chibi.config.waving.keys": "Keybinds are set in the vanilla options.",
 
+	"chibi.config.akimbo": "Swords Akimbo",
+	"chibi.config.akimbo.tooltip": "Holding two identical items in your hands will let you \"use\" both.",
+
 	"chibi.config.straferunning": "Strafe Running",
 	"chibi.config.straferunning.tooltip": "Running diagonally is approx. 1.4 times faster.",
 

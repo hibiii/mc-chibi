@@ -26,8 +26,8 @@ public class Chibi implements ClientModInitializer {
 	public static SoundEvent playerHurtSound;
 	public static SoundEvent playerDeathSound;
 	
-	// RenderHat
-	public static boolean renderHat = false;
+	// Akimbo
+	public static boolean canAkimbo = false;
 	
 	public static MinecraftClient instance;
 	

@@ -6,10 +6,11 @@
   "mixins": [
   ],
   "client": [
-    "Straferunning",
-    "WaveAway",
-    "WalkAway",
-    "ShowOwnName"
+    "ClientPlayerEntityMixin",
+    "EntityMixin",
+    "LivingEntityRendererMixin",
+    "MinecraftClientMixin",
+    "PlayerEntityMixin"
   ],
   "injectors": {
     "defaultRequire": 1
