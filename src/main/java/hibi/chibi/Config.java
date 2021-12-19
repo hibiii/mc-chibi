@@ -13,6 +13,7 @@ public class Config {
 	public static boolean waving = false;
 	public static boolean straferunning = false;
 	public static boolean akimbo = false;
+	public static boolean saveAnywhere = false;
 
 	private static File file = new File(FabricLoader.getInstance().getConfigDir().toFile(), "chibi.properties");
 
@@ -32,6 +33,8 @@ public class Config {
 						straferunning = Boolean.parseBoolean(line.substring(14));
 					if(line.startsWith("akimbo "))
 						akimbo = Boolean.parseBoolean(line.substring(7));
+					if(line.startsWith("hotbarSaveAnywhere "))
+						saveAnywhere = Boolean.parseBoolean(line.substring(19));
 					line = br.readLine();
 				} while (line != null);
 				br.close();
@@ -48,6 +51,7 @@ public class Config {
 			writer.write("waving " + Boolean.toString(waving) + "\n");
 			writer.write("straferunning " + Boolean.toString(straferunning) + "\n");
 			writer.write("akimbo " + Boolean.toString(akimbo) + "\n");
+			writer.write("hotbarSaveAnywhere " + Boolean.toString(saveAnywhere) + "\n");
 			writer.close();
 		}
 		catch (Exception e) {
