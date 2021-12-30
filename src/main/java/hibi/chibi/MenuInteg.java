@@ -45,6 +45,16 @@ public class MenuInteg implements ModMenuApi {
 					.setSaveConsumer(val -> Config.saveAnywhere = val)
 					.setTooltip(new TranslatableText("chibi.config.save_anywhere.tooltip"))
 					.build())
+				.addEntry(entryBuilder.startBooleanToggle(new TranslatableText("chibi.config.no_whispers"), Config.noWhispers)
+					.setDefaultValue(false)
+					.setSaveConsumer(val -> Config.noWhispers = val)
+					.setTooltip(new TranslatableText("chibi.config.no_whispers.tooltip"))
+					.build())
+				.addEntry(entryBuilder.startBooleanToggle(new TranslatableText("chibi.config.no_literals"), Config.noLiterals)
+					.setDefaultValue(false)
+					.setSaveConsumer(val -> Config.noLiterals = val)
+					.setTooltip(new TranslatableText("chibi.config.no_literals.tooltip.1"), new TranslatableText("chibi.config.no_literals.tooltip.2"))
+					.build())
 				.setBackground(new Identifier("chibi", "menu_background.png"));
 				builder.setSavingRunnable(() -> Config.save());
 			return builder.build();

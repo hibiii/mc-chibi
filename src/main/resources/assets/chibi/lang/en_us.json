@@ -19,6 +19,13 @@
 	"chibi.config.save_anywhere": "Survival Hotbar Saving",
 	"chibi.config.save_anywhere.tooltip": "Save your hotbar outside creative mode.",
 
+	"chibi.config.no_whispers": "Disable Whispers",
+	"chibi.config.no_whispers.tooltip": "Prevent whispers from showing up clientside.",
+
+	"chibi.config.no_literals": "Disable Literal Messages",
+	"chibi.config.no_literals.tooltip.1": "Custom text on servers are usually literal.",
+	"chibi.config.no_literals.tooltip.2": "Most nagging on servers should be shut up with this.",
+
 	"chibi.config.tooltip.dont_cheat": "This feature may be considered cheating.",
 	"chibi.config.tooltip.wip": "This feature is a work in progress, and is buggy.",
 

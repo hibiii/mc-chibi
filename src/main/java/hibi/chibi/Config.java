@@ -14,6 +14,8 @@ public class Config {
 	public static boolean straferunning = false;
 	public static boolean akimbo = false;
 	public static boolean saveAnywhere = false;
+	public static boolean noWhispers = false;
+	public static boolean noLiterals = false;
 
 	private static File file = new File(FabricLoader.getInstance().getConfigDir().toFile(), "chibi.properties");
 
@@ -35,6 +37,10 @@ public class Config {
 						akimbo = Boolean.parseBoolean(line.substring(7));
 					if(line.startsWith("hotbarSaveAnywhere "))
 						saveAnywhere = Boolean.parseBoolean(line.substring(19));
+					if(line.startsWith("noWhispsers "))
+						noWhispers = Boolean.parseBoolean(line.substring(12));
+					if(line.startsWith("noLiterals "))
+						noLiterals = Boolean.parseBoolean(line.substring(11));
 					line = br.readLine();
 				} while (line != null);
 				br.close();
@@ -52,6 +58,8 @@ public class Config {
 			writer.write("straferunning " + Boolean.toString(straferunning) + "\n");
 			writer.write("akimbo " + Boolean.toString(akimbo) + "\n");
 			writer.write("hotbarSaveAnywhere " + Boolean.toString(saveAnywhere) + "\n");
+			writer.write("noWhispers " + Boolean.toString(noWhispers) + "\n");
+			writer.write("noLiterals " + Boolean.toString(noLiterals) + "\n");
 			writer.close();
 		}
 		catch (Exception e) {

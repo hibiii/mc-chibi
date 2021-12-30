@@ -6,6 +6,7 @@
   "mixins": [
   ],
   "client": [
+    "InGameHudMixin",
     "ClientPlayerEntityMixin",
     "EntityMixin",
     "LivingEntityRendererMixin",
