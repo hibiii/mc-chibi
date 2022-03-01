@@ -6,6 +6,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import hibi.chibi.Chibi;
 import hibi.chibi.Config;
@@ -48,7 +49,8 @@ public class MinecraftClientMixin {
 			value = "INVOKE",
 			target = "Lnet/minecraft/client/network/ClientPlayerEntity;swingHand(Lnet/minecraft/util/Hand;)V"),
 		cancellable = true)
-	private void akimbo(CallbackInfo info) {
+	// BOTH METHODS ARE VOID YOU STUPID PIECE OF GALVANIZED SAND
+	private void akimbo(CallbackInfoReturnable<?> info) {
 		if(Config.akimbo) {
 			Chibi.canAkimbo = ItemStack.areItemsEqual(this.player.getOffHandStack(), this.player.getMainHandStack());
 			if(Chibi.canAkimbo) {
@@ -66,6 +68,6 @@ public class MinecraftClientMixin {
 			value = "INVOKE",
 			target = "Lnet/minecraft/client/network/ClientPlayerEntity;isCreative()Z"))
 	private boolean allowSaving(ClientPlayerEntity that) {
-		return that.isCreative() || (Config.saveAnywhere && !this.options.keyLoadToolbarActivator.isPressed());
+		return that.isCreative() || (Config.saveAnywhere && !this.options.loadToolbarActivatorKey.isPressed());
 	}
 }
